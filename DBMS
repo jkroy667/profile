@@ -76,8 +76,7 @@ Topics for DBMS
         the middle level of abstraction which defines what data is stored and its relationships among the data.
     * View(user perspective):
         the highest level of abstraction, provides only part of the database to the user and application.
-        
-
+    
 * Indexing in database 
     As u know database stores the data in disk and data structure stores the data in RAM. So in disk data is stored in tracks and sectors. so intersection of both makes a block in disk.
     so lets say each block can store 512Bits of data and the block offset becomes 0 to 511. 
@@ -100,4 +99,16 @@ Topics for DBMS
     difference between B tree and B+ tree is that in B+ tree all keys and their record pointer are stored in leave nodes and all leave nodes are connected through linked list. helps doing when we want
     data in range
 
+* what is normalization ? and types of normalization ?
+    It is a process of organizing data in database to reduce redunduncy by dividing a database into tables and defining relations between them to ensure that data is stored efficiently.
+    Types of normalizations:
+        * first normal form (1nf):
+            elemeniate duplicate columns from the table. e.g, user,course1,course2 in a table to make user,course
+        * second normal form (2nf):
+            meets all requirements of 1nf. Ensuring non-key attributes are fully dependent on primary key.e.g, divide id,name,couse,instructor ---> id,name and id,course,instructor
+        * third normal form (3nf):
+            meets all requirements of 2nf. Ensuring non-key attributes ate only dependent on primary key.e.g, divide id,course,instructor ---> id,course and course,instructor.
+        * Boyce-Codd Normal Form (BCNF):
+            advance version of 3nf
+    disadvantage of normalisation is that it increases complexity,performance overhead(joins),higher latency,maintanance overhead.
     
