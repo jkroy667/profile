@@ -123,4 +123,17 @@ Topics for DBMS
     when to use:
         * when read operation is more frequent than write
 
-    
+* what is functional dependency ?
+    A functional dependency is a constraint that specifies the relationship between two sets of attributes where one set can accurately determine the value of other sets. It is denoted as X → Y,
+    where X is a set of attributes that is capable of determining the value of Y. The attribute set on the left side of the arrow, X is called Determinant, while on the right side, Y is called 
+    the Dependent. eg. user_id -> user_name
+
+* what is ER diagram ?
+    * It is a conceptual framework used to describe and design the structure of database.
+    * It represents data in terms of entity(real-world object)(student,course), attibutes(properties of entity)(student_id,student_name,course_id) and
+    relationships(association between entities)(student enrolls course, profressor teaches course).
+    * 'is a' relation (inheritance) = shape -> triange,circle and 'has a' relation (association) = car -> engine
+
+
+
+
