@@ -14,5 +14,10 @@ Topics for DBMS
 
 * B trees and B+ trees
     It uses m-way search tree wit some rules and uses multi level indexing. watch abdul bari video.
+    rules that b tree follow in m-way tree (m = no. of childeren) (k=no. of keys) and k = m-1
+    1) no. of keys that a node will have = ceil(m/2) other than root node.
+    2) root can have min 2 children.
+    3) all the leaves are at same level. height = logm(n) where n is no of records and m =  max number of keys that a nodes can have.
+    4) creation process is bottom up 
 
     
