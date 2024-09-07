@@ -22,7 +22,33 @@ Topics for DBMS
     3) Data Control language (DCL): used to control data in the database. (GRANT,REVOKE)
     4) Transaction control language (TCL): used to manage transactions in the database. (COMMIT,ROLLBACK,SAVEPOINT)
 
-*
+* what is ACID properties ?
+    To ensure consistency in database, certain properties are followed by the transations occured in the system.
+    refer Q3
+
+* Difference between vertical and horizontal scaling ?
+    vertical scaling:
+        * Involves adding more resources (CPU,RAM,Storage) to a single node or server.
+        * Easier to implement but had hardware limitations and single point of failure for a system.
+        * Suitable for apllications with limited growth requirements.
+    Horizontal scaling: 
+        * Involves adding more servers or nodes to distribute the load.
+        * Provides better fault tolerance and can hangle larger growth.
+        * Complex to handle but can scale infinitly according to the demand.
+
+* What is Sharding ? 
+    Sharding is a database partitioning technique where a large database is split into smaller and manageble peices called shards. Each shard contains a subset of data and is stored in seperate server.
+    * purpose: improves performance and scalability by distributing load accross multiple servers.
+    * Type: can be based on range based sharding or hash based sharding.
+        * range-based sharding 
+            Data is partitioned in shards based on sharding keys. (ex. user with id: 1-1000 -> shard1, 1001-2000 -> shard2......)
+            Easy to implement but can lead to uneven data distribution if data is not uniformly distributed.
+        * Hash-based sharding 
+            Data is distributed by applying hashing to sharding keys. (hash_func(user_id)%no_of_shards).
+            provides even data distribution and balances load across shards, but may make range queries much difficult.
+            Consistent hashing can also be used it continouly adding or deleting the shards in the distribution.
+    * Benfefits: Reduces query load, increase read/write throughput, and provides fault tolerance.
+
 
 * Indexing in database 
     As u know database stores the data in disk and data structure stores the data in RAM. So in disk data is stored in tracks and sectors. so intersection of both makes a block in disk.
