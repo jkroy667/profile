@@ -49,6 +49,34 @@ Topics for DBMS
             Consistent hashing can also be used it continouly adding or deleting the shards in the distribution.
     * Benfefits: Reduces query load, increase read/write throughput, and provides fault tolerance.
 
+* Keys in DBMS ?
+    keys are set of attributes, that can uniquely identify tuple/row/record in a relation/table.
+    types of keys:
+        * primary key: uniquely identifies each record in a table, must be unique and not NULL.
+        * Foreign key: establishs a relation between table by refrencing the primary key of another table.
+        * unique key: ensures that all values in a column or set of columns are unique accross the table. Can be null but only one null value is allowed if it is a single column key.
+        * composite key: a primary key consists of 2 or more columns to uniquely identify the record.
+        * candidate key: all the columns including primary key that can uniquiely identifies the record. One of the candidate key is a primary key.
+        * Alternate key: a candidate key that is not selected as primary key.
+
+* What are the types of relationships ?
+    One-to-One(1:1):
+        each record in one table is related to single record in another table and vice versa. ex. person table -- passport table
+    One-to-many(1:n):
+        single record in one table is related to multiple records in another table. person table -- order table
+    many-to-may(n:n):   
+        multiple record in one table is related to multiple records in another table. person table -- role table
+
+* what is data Abstraction in DBMS ? what are its 3 levels ?
+    Data abstraction refers to the process of hiding the underlying complexity of internal database and its structure from the user allowing them to interact with data without knowing its details.
+    levels of Abstractions are:-
+    * Physical(storage):
+        lowest level of abstraction which defines how the data is actually stored in database. e.g, file storage, indexing etc.
+    * logical(structure):
+        the middle level of abstraction which defines what data is stored and its relationships among the data.
+    * View(user perspective):
+        the highest level of abstraction, provides only part of the database to the user and application.
+        
 
 * Indexing in database 
     As u know database stores the data in disk and data structure stores the data in RAM. So in disk data is stored in tracks and sectors. so intersection of both makes a block in disk.
@@ -71,4 +99,5 @@ Topics for DBMS
     4) creation process is bottom up 
     difference between B tree and B+ tree is that in B+ tree all keys and their record pointer are stored in leave nodes and all leave nodes are connected through linked list. helps doing when we want
     data in range
+
     
