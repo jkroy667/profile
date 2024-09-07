@@ -1,5 +1,29 @@
 Topics for DBMS
 
+* what is database ?
+    A database is an organised collection of structured information, or data, typically stored electronically in a computer system. 
+
+* what is DBMS ?
+    A dbms helps to store and manage data in database. It acts as an interface between the user and the database enabling users to efficiently create,read,update,delete data into database while enabling 
+    data security,integrity and concurency.
+
+* what is RDMS and what are its properties ?
+    Relational database management systems is a database system that is based on a relational model where data is stored in tables(relations) linked by keys. It allows to efficiently store,retrieve and 
+    manipulate the structured data using SQL.
+    -----properties of RDMS (ACID)------  
+    1) Atomicity: It ensures that all part of transactions are completed. If not transaction get rollback to its initial state maintaining data consistancy.
+    2) Consistency: Ensures data transaction from one valid state another, maintaining data integrity.
+    3) Isolation: Ensures transactions are executed independently without any interference.
+    4) Durabiltiy: Ensures that once transaction get commited, it is permanently stored, even in case of failure.
+
+* What are the types of database language ?
+    1) Data defination language (DDL): used to define and manage database schema. (CREATE, ALTER, DROP)
+    2) Data Manipulation language (DML):  used to retrieve and manipulate data within the database. (SELECT, INSERT, UPDATE, DELETE)
+    3) Data Control language (DCL): used to control data in the database. (GRANT,REVOKE)
+    4) Transaction control language (TCL): used to manage transactions in the database. (COMMIT,ROLLBACK,SAVEPOINT)
+
+*
+
 * Indexing in database 
     As u know database stores the data in disk and data structure stores the data in RAM. So in disk data is stored in tracks and sectors. so intersection of both makes a block in disk.
     so lets say each block can store 512Bits of data and the block offset becomes 0 to 511. 
@@ -19,5 +43,6 @@ Topics for DBMS
     2) root can have min 2 children.
     3) all the leaves are at same level. height = logm(n) where n is no of records and m =  max number of keys that a nodes can have.
     4) creation process is bottom up 
-
+    difference between B tree and B+ tree is that in B+ tree all keys and their record pointer are stored in leave nodes and all leave nodes are connected through linked list. helps doing when we want
+    data in range
     
