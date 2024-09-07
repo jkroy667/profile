@@ -155,6 +155,57 @@ Topics for DBMS
         * weak entity type: Weak entity type doesn't have a key attribute. It can't be identified on its own, it depends on some strong entity type for its unique identity.
     Entity set: An entity set is a collection of entities of the same entity type. It represents a set of all entities that belong to a particular entity type.
     
+* what are SQL commands ? 
 
-    
+* what is Nested queries in SQL ?
+    A nested query is a query that has another query embedded within it. The embedded query is called a subquery.e.g,
+    * SELECT * FROM Employees WHERE Salary = (SELECT MAX(Salary) FROM Employees);
+    * select E.ename from employee E where E.eid IN (select S.eid from salary S where S.regno=103);
+    * SELECT EmployeeID, Salary FROM Employees e1 WHERE Salary > (SELECT AVG(Salary) FROM Employees e2 WHERE e1.DepartmentID = e2.DepartmentID);
+
+* what are joins 
+    joins in sql is used to combine rows from two or more tables based on a related column between them.
+    * INNER JOIN:
+        Returns only the rows where there is a match between the tables.
+        Find employees and their departments where both have matching department IDs.
+            SELECT Employees.EmployeeID, Employees.Name, Departments.DepartmentName
+            FROM Employees
+            INNER JOIN Departments ON Employees.DepartmentID = Departments.DepartmentID;
+    * LEFT JOIN (or LEFT OUTER JOIN):
+        Returns all the rows from the left table and matched rows from the right table. If there is no match, NULL values are returned for columns from the right table.
+        Find all employees and their departments, including employees who do not belong to any department.
+            SELECT Employees.EmployeeID, Employees.Name, Departments.DepartmentName
+            FROM Employees
+            LEFT JOIN Departments ON Employees.DepartmentID = Departments.DepartmentID;
+    * RIGHT JOIN (or RIGHT OUTER JOIN)
+        Returns all rows from the right table and matched rows from the left table. If there is no match, NULL values are returned for columns from the left table.
+        Find all departments and their employees, including departments that have no employees.
+            SELECT Employees.EmployeeID, Employees.Name, Departments.DepartmentName
+            FROM Employees
+            RIGHT JOIN Departments ON Employees.DepartmentID = Departments.DepartmentID;
+    * FULL JOIN ( or FULL Outer join )
+        Returns all rows when there is a match in one of the tables. It combines the results of both LEFT JOIN and RIGHT JOIN.
+        Find all employees and all departments, including those without matches in the other table.
+            SELECT Employees.EmployeeID, Employees.Name, Departments.DepartmentName
+            FROM Employees
+            FULL JOIN Departments ON Employees.DepartmentID = Departments.DepartmentID;
+    * CROSS JOIN:
+        Returns the Cartesian product of the two tables, meaning it combines every row from the first table with every row from the second table.
+        Create a list of all possible combinations of employees and departments.
+            SELECT Employees.EmployeeID, Departments.DepartmentName
+            FROM Employees
+            CROSS JOIN Departments;
+    * SELF JOIN:
+        A self join is a join where a table is joined with itself. It’s useful for querying hierarchical data or comparing rows within the same table.
+        Find pairs of employees who work in the same department.
+            SELECT e1.EmployeeID AS Employee1, e2.EmployeeID AS Employee2
+            FROM Employees e1
+            INNER JOIN Employees e2 ON e1.DepartmentID = e2.DepartmentID
+            WHERE e1.EmployeeID <> e2.EmployeeID;
+
+
+
+
+
+
 
