@@ -8,8 +8,11 @@ Topics for DBMS
     so to get a record we need to search 25 blocks in a disk. we can reduce this time by introducing index table of id and a pointer to that block. now size of index row =  16bits.
     no. of blocks required ~ 4 as 512/16 = 32 rows in 1 block and 100/32 ~ 4.
     now searching becomes 4 + 1 = 5 block reduced from 25 to 5 blocks.
-    we can also create sparse of indexing by introducing index table of index table when the data becomes huge. let say we have 1000 records than blocks = 250, index block becomes = 40.
+    we can also create sparse of indexing (multi level indexing) by introducing index table of index table when the data becomes huge. let say we have 1000 records than blocks = 250, index block becomes = 40.
     this searching is also expensive therefore introduce another index table of index table which stores pointer to the block not record.
     therefore now the index table key value will be 1,33,.... with value as the pointer of the block. so blocks required for this  ~ 2. so search = 2 + 1 + 1 becomes 4 block only.
+
+* B trees and B+ trees
+    It uses m-way search tree wit some rules and uses multi level indexing. watch abdul bari video.
 
     
