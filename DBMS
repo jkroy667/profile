@@ -111,4 +111,16 @@ Topics for DBMS
         * Boyce-Codd Normal Form (BCNF):
             advance version of 3nf
     disadvantage of normalisation is that it increases complexity,performance overhead(joins),higher latency,maintanance overhead.
+
+* what is denormalization ?
+    Denormalization is a process of adding redunduncy in the database by combining tables or storing duplicate data to improve read performance. used to reduce number of joins
+    benefits are:
+        * improves read performance 
+        * simplifies queries
+    disadvantage:
+        * needs more storage dure to redundancy
+        * Risk of data Anomalies, can lead to data inconsistency since data is stored in different locations.
+    when to use:
+        * when read operation is more frequent than write
+
     
