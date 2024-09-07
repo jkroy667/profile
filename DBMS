@@ -134,6 +134,27 @@ Topics for DBMS
     relationships(association between entities)(student enrolls course, profressor teaches course).
     * 'is a' relation (inheritance) = shape -> triange,circle and 'has a' relation (association) = car -> engine
 
+* what is Conflict serielization in dbms ?
+    Conflict Serializability is a concept in DBMS that ensures the correctness of concurrent transaction execution. It checks whether a given schedule
+    (sequence of operations) can be transformed into a serial schedule (where transactions are executed one after another) without altering the outcome.
 
+* What is CCP ? (Concurrency Control Protocols) 
+    Concurrency Control Protocols (CCP) manage simultaneous transactions in a database to ensure data consistency and integrity.
+    * Lock-Based Protocols:
+        Use locks to prevent multiple transactions from accessing the same data simultaneously.
+    * Timestamp-Based Protocols:
+        assigns unique timestamps to transactions and ensures operations are executed in timestamp order.
+    * Validation Based Concurrency Control Protocol
+         Allows transactions to execute without locks and checks for conflicts before committing.
 
+* what are Entity, Entity Type, Entity Set, Weak Entity Set.
+    Entity in DBMS is a real-world object with an existance. for example, in a College database, the entities can be Professor, Students, Courses, etc.
+    The entity type is a collection of entity with similar attributes.
+    Types of entity type:
+        * strong entity type: In this entity type primary key is used to identify each entity uniquely. It is represented by rectangle
+        * weak entity type: Weak entity type doesn't have a key attribute. It can't be identified on its own, it depends on some strong entity type for its unique identity.
+    Entity set: An entity set is a collection of entities of the same entity type. It represents a set of all entities that belong to a particular entity type.
+    
+
+    
 
