@@ -232,3 +232,20 @@ Topics for DBMS
         Usually cannot be rollbacked depends on the DBMS.
         Faster since it deallocates entire data pages without logging individual deletions.
         TRUNCATE TABLE Employees;
+
+* Difference Between Intension and Extension in a Database ?
+    * Intension (Schema):
+        Intensions define the schema or structure of a database table. It is fixed part of the database that defines table name,columns,data type,contraints and relationships.
+        The schema definition of an Employees table with columns: ID (integer), Name (varchar), Department (varchar).
+    * Extension (Instance):
+        extension refers to the actual content or data stored in the database at any given time. It is the collections of all rows in a table.
+
+* Difference between share lock and exclusive lock, definition of lock ?
+    A lock in DBMS is a mechanism that controls access to data to ensure data integrity and consistency during concurrent transactions.
+    Locks presents conflicts such as dirty reads,lost updates, and inconsistent reads.
+    Dirty Read: Occurs when a transaction reads uncommitted data from another transaction, which may lead to inconsistencies if the other transaction rolls back.
+    * Shared Lock (S-Lock):
+        allows multiple transactions to read a data item simultaneously but prevents any transaction from modifying it.
+    * Exclusive Lock (X-Lock):
+        allows a single transaction to both read and modify a data item. It prevents any other transaction from reading or modifying the locked data.
+        
