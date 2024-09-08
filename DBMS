@@ -203,9 +203,21 @@ Topics for DBMS
             INNER JOIN Employees e2 ON e1.DepartmentID = e2.DepartmentID
             WHERE e1.EmployeeID <> e2.EmployeeID;
 
-
-
-
-
-
+* Difference Between 2-Tier and 3-Tier Architecture
+     * 2-Tier Architecture
+        The application is divided into two layers, client and the server.
+        Client directly interacts with the user and performs presentation logic.(eg. GUI), server manages database and business logic.
+        Pros:
+            simple to implement
+        Cons:
+            limited scalablity, tightly coupled, less secure as business logic is often exposed to the client.
+    * 3-Tier Architecture
+        The application is divided into 3 layers,client(presentation layer) middle tier(or bussiness layer logic), and the data layer.
+        Client handles user interface and presentation logic. Middle layer or bussiness logic layer contains processing rule. data layer manages database and storage
+        Pros: 
+            Better scalability and flexibility and maintanability.
+            Improved security by separating presentation, logic, and data layers
+        Cons:
+            More complex design and development
+            Higher cost of deployment and maintenance.
 
