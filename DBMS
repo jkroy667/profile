@@ -221,3 +221,14 @@ Topics for DBMS
             More complex design and development
             Higher cost of deployment and maintenance.
 
+* What is the difference between TRUNCATE and DELETE in SQL ?
+    * DELETE 
+        Remove specific row based on conditions (WHERE Cause)
+        Can be rolled back while using transactions 
+        Slower because it deletes rows one by one and logs each deletion.
+        DELETE FROM Employees WHERE Department = 'IT';
+    * TRUNCATE
+        Remove all the rows from the table basically resetting it.
+        Usually cannot be rollbacked depends on the DBMS.
+        Faster since it deallocates entire data pages without logging individual deletions.
+        TRUNCATE TABLE Employees;
