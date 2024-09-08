@@ -26,4 +26,50 @@
     * Monolithic kernel:
         A monolithic kernel is a type of kernel architecture where the entire operating system runs in a single kernel space, including device drivers, file system management, and system calls.
         Provides good performance but lots of lines of code. e.g, Unix, Linux.
+
+* Difference between process and program and thread? Different types of process ? 
+    * Program:
+        A program is a set if instruction written in a programming language that is stored in a disk.
+        eg. a C file example.c or a executable file example.exe
+    * Process:
+        process is an instance of a program. When execute a program it becomes a process which performs all the tasks meantioned in the program.
+        eg. When you open a browser (e.g., chrome.exe), an instance of the program is created as a process.
+    * Thread:
+        A thread is a smallest unit of execution in a process.It is also called a lightweight process. The idea is to divide the process into multiple process to achieve parallelism.
+        eg. Word processor uses multiple threads: one thread to format the text, another thread to 
+
+* Define virtual memory, thrashing, threads.
+    * virtual memory:
+        It is a memory management technique used by the operating system to provide an "isllusion" of a large, contiguous block of memory to programs, even the physical memory(RAM) is smaller.
+        It used combination of RAM and disk storage(HDD or SDD) to extend the apparent avialable memory.
+        When a program needs more memory than is physically available, parts of data that are not immediately needed is swapped out to disk. and the required data is loaded to the RAM.
+        Provides isolation between processes, enhancing security and stability.
+    * thrashing:
+        It is a situation when system is spending a major portion of its time in serving page faults. But the actual processing is done very low.
+        High degree of multiprogramming (if number of process keeps on increasing in the memory), if a process is allocated too few frames, then there will too frequent page faults. causing thrashing
+        if a computer has too many applications open with high memory demands, it may start thrashing as the operating system continuously swaps data between RAM and disk.
+
+* What is RAID ? Different types ?
+    Redundant array of independent disk is a technique which makes use of combination of multiple disk instead of using a single disk to increase performance, data redunduncy or both.
+    It distributes data across the disks in various ways, depending on the RAID level, providing different balances of speed, storage capacity, and fault tolerance.
+    Types of RAID:
+        * RAID 0 (Striping):
+            Data is split across multiple disks. high performance because of parallel read and write but no redunduncy.
+            If one disk fails all data is lost.
+        * RAID 1 (Mirroring):
+            Data is duolicated across multiple disks. High data reliablity; redunduncy.
+            Uses twiced the storage capacity.
+        * RAID 10 (striping + mirroring)
+            Combines RAID 1 and RAID 0 (mirroring and striping). High performance and fault tolerance.
+        * RAID 3 (striping with single parity):
+            Data is striped with parity information stored in a single disk, so that if one striped disk fail can retreive its data from parity.
+            Slow writes as parity also need to be update in case of update so parity disk acts a bottleneck here as lot of throughput to handle.
+        * RAID 5 (striping with distributed parity)
+            Data is striped with parity information distributed among disks. Good balance of performance, storage, and fault tolerance.
+            Can recover from only one disk failure.
+        * RAID 6 (striping with double parity)
+            Similar to RAID 5 but with double parity. Can survive up to two disk failures. 
+            Slower write performance.
+        * RAID 50 and RAID 60:
+            Combine multiple RAID 5 or RAID 6 arrays with RAID 0.
         
