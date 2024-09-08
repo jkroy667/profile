@@ -14,4 +14,16 @@
             Process data in real-time, with strict time constraints, Used for applications where time-critical response is essential. eg VxWorks
         6) Mobile OS:
             Designed specially for mobile devices. Optimizes performance, battery life, and user experience for mobile platforms. eg Android, iOS.
-            
+
+* What is a socket, kernel and monolithic kernel ? 
+    * Socket:
+        A socket is an endpoint for sending or recieving message over a network.
+        Sockets allow application to communicate with each other using standard protocol like TCP or UDP.
+        Messaging Apps use sockets, particularly TCP or WebSockets, to facilitate real-time communication, ensuring that messages are delivered quickly and reliably between users.
+    * Kernel:
+        It is the core component of an operating system that manages system resource and communication between hardware and software.
+        It handles task such as process management, memory management, device management, and system calls.
+    * Monolithic kernel:
+        A monolithic kernel is a type of kernel architecture where the entire operating system runs in a single kernel space, including device drivers, file system management, and system calls.
+        Provides good performance but lots of lines of code. e.g, Unix, Linux.
+        
