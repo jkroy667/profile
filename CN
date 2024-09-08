@@ -1,1 +1,17 @@
-
+* What is the main purpose of an operating system? Discuss different types?
+    The main purpose of operating system is to act as an intermediary between computer hardware and the user, managing hardware resources, providing user interface and enabling execution of 
+    applications. the OS ensures fair use of resources(CPU,RAM,Storage etc), manages file system, handles I/O, ensures security and stablity.
+    * Types of OS 
+        1) Batch OS:
+            process batches of jobs without user interaction, ideal for repeititive task. eg Early IBM system
+        2) Time Sharing OS:
+            Allows multiple users to interact with the computer simultaneously. Provides each user with a small time slice for CPU usage. eg UNIX
+        3) Distributed OS:
+            manages a group of distinct computer and make them appear as a single system. Enables resource sharing and improved performance accross a network. eg Amoeba, LOCUS.
+        4) Network OS:
+            Provides networking capabilities to manage data, users, and security over a network. eg Windows Server,
+        5) Real-Time OS:
+            Process data in real-time, with strict time constraints, Used for applications where time-critical response is essential. eg VxWorks
+        6) Mobile OS:
+            Designed specially for mobile devices. Optimizes performance, battery life, and user experience for mobile platforms. eg Android, iOS.
+            
