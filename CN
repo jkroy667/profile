@@ -72,4 +72,40 @@
             Slower write performance.
         * RAID 50 and RAID 60:
             Combine multiple RAID 5 or RAID 6 arrays with RAID 0.
+
+* What is a deadlock? Different conditions to achieve a deadlock. 
+    It is a situation in multi-process system where two or more process not able to procced because each is holding a resource that the other one holds.
+    Conditions of deadlock:
+        A deadlock occurs when the following four conditions are met simultaneously:
+        * Mutual exclusion:
+            Only one process can use resource at a time. If another process request for the resource it should wait.
+        * Hold and wait:
+            A process must be holding atleast one resource and simultaneously waiting for additional resources that are currently held by the other processes.
+        * No preemption:
+            Resources cannot be forcebly taken from the process holding them; they must be released voluntarily by the holding process after completion of the task.
+        * Circular wait:
+            A circular chain of processes exists, where each process holds at least one resource needed by the next process in the chain. 
+            For example, Process A is waiting for a resource held by Process B, Process B is waiting for a resource held by Process C, and Process C is waiting for a resource held by Process A.
+    A deadlock occurs when these four conditions coexist in a system. Managing deadlocks typically involves prevention, detection, or recovery strategies to avoid deadlock.
+
+* What is fragmentation? Types of fragmentation. 
+    Fragmentation is the inefficient use of memory or storage, where free space is divided into small, unusable pieces, affecting system performance.
+    Types of fragmentation:
+        Internal fragmentation:
+            Occurs when fixed-sized memory blocks are allocated, and the memory requested by the process is smaller than the allocated block size. 
+            The unused space within the allocated block is wasted.
+        External fragmentation:
+            Happens when free memory is scattered in small, non-contiguous blocks across the system.
+            Even though there may be enough total free memory to satisfy a request, the memory is not contiguous, preventing allocation
+
+* What is spooling ?
+    Simulataneous peripheral operations online is a process where data is stored in a buffer (usually in a disk) to be processed or send to the peripheral devices like printer or any I/O devices.
+    Purpose of Spooling:
+        Improves performance: Allows CPU to continue working while peripheral device process data stored in disk.
+        Manages Device Access: Coordinates access to slower devices shared by multiple users or processes.
+        Prevents Blocking: Enables multiple tasks to be executed simultaneously without waiting for one device to finish.
+    example: Print Spooling: When multiple print jobs are sent to a printer, they are stored in a spool (a buffer area on the disk). 
+    The printer processes each job sequentially from the spool while the CPU continues other tasks without waiting for the printer to complete.
+
+* 
         
