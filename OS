@@ -107,5 +107,29 @@
     example: Print Spooling: When multiple print jobs are sent to a printer, they are stored in a spool (a buffer area on the disk). 
     The printer processes each job sequentially from the spool while the CPU continues other tasks without waiting for the printer to complete.
 
-* 
+* What is semaphore and mutex ? differentiate also Define Binary semaphore.
+    Semaphore:
+        A synchronization tool that uses a counter to access the shared content.
+        Types:
+            Counting Semaphore: Allows multiple threads to access resources up to a set limit.
+            Binary Semaphore: Functions like a mutex, allowing only one thread to access a resource at a time.
+    Mutex:
+        A locking mechanism that ensures only one thread can access a resource at a time.
+        The thread that locks the mutex must be the one to unlock it.
+
+* Define Belady’s Anomaly ?
+    Belady’s Anomaly is a situation where increasing the number of page frames in memory can actually lead to an increase in the number of page faults
+    when using the FIFO (First-In-First-Out) page replacement algorithm.
+    * Solution to fix Belady’s Anomaly:
+        Implementing alternative page replacement algo helps eliminate Belady’s Anomaly.. Use of stack based algorithms, such as Optimal Page Replacement Algorithm 
+        and Least Recently Used (LRU) algorithm, can eliminate the issue of increased page faults as these algorithms assign priority to pages
+
+* what are Starving and Aging in OS ?
+    Starvation:
+        A situation where a process is contineously denied nessasary resources because other processes are always given priority.
+        Can occur in scheduling systems where high-priority tasks preempt lower-priority ones.
+    Aging:
+        A technique used to prevent starvation by gradually increasing the priority of processes that have been waiting for a long time.
+        Ensure long waiting process get a chance to execute.
+    starvation is the indefinite delay of processes, while aging is a method to prevent it by boosting the priority of waiting processes over time.
         
