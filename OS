@@ -170,5 +170,44 @@
             A mix between hard and soft RTOS. Missing a deadline is undesirable but does not result in a complete system failure.        
             Used in systems like online transaction processing or some industrial systems where occasional deadline misses are tolerable.
 
-    
-        
+* what is Static and dynamic binding ?
+    Static binding happens when the code is compiled, while dynamic bind happens when the code is executed at run time.
+
+* Explain FCFS First-Come, First-Served) Scheduling ?
+    It is a simple CPU scheduling algorithm where the process that arrives first gets executed first.
+    It is a non-preemptive scheduling algorithm, meaning once a process starts its execution, it cannot be stopped until it completes.
+    Longer processes can lead to the "Convoy Effect," where shorter processes have to wait for longer ones to complete.
+    Lack of preemption can lead to long wait times and reduced responsiveness.
+    Process	Arrival Time	Burst Time
+    P1	        0	        5
+    P2	        1	        3
+    P3	        2	        2
+
+    Execution Order: P1 → P2 → P3
+    Waiting Time:
+    P1: 0
+    P2: 4 (P1's burst time)
+    P3: 7 (P1 + P2's burst times)
+
+* Explain SJF (Shortest Job first) 
+    SJF (Shortest Job First) is a CPU scheduling algorithm that selects the process with the shortest burst time
+    (i.e., the least time required to execute) from the ready queue for execution. It can be either preemptive or non-preemptive:
+        * Non-preemptive SJF: Once a process starts executing, it runs until completion.
+        * Preemptive SJF (Shortest Remaining Time First, SRTF): If a new process arrives with a shorter burst time than the remaining time of the current process, the CPU switches to the new process.
+    Efficient use of CPU time as shorter tasks finish quickly, allowing more processes to be executed in less time.
+    Starvation: Longer processes may suffer from indefinite waiting if shorter processes keep arriving. 
+
+    Process	Arrival Time	Burst Time
+    P1	              0	        7
+    P2	              2	        4
+    P3	              4	        1
+    P4	              5	        4
+
+    Execution Order (Non-preemptive SJF): P1 → P3 → P2 → P4
+
+    Execution Order (Preemptive SJF / SRTF):
+    P1 starts first (since it arrives at 0).
+    At time 2, P2 arrives but doesn't preempt P1.
+    At time 4, P3 arrives and preempts P1 (since P3 has the shortest burst time).
+    After P3 completes, the next shortest job, P2, is executed.
+    Finally, P4 is executed.
