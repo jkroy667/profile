@@ -132,4 +132,43 @@
         A technique used to prevent starvation by gradually increasing the priority of processes that have been waiting for a long time.
         Ensure long waiting process get a chance to execute.
     starvation is the indefinite delay of processes, while aging is a method to prevent it by boosting the priority of waiting processes over time.
+
+* Why does thrashing occurs ?
+    High degree of multiprogramming(if number of proccess keeps on increasing in memory), lack of frames(if a process is allocated too few frames) then 
+    there will be too many and too frequent page faults.) causing thrasing.
+
+* What is paging and why we need it ?
+    paging is a memory management scheme that eleminates the need for contiguous allocation of physical memory. Operating system divides the memory into 
+    blocks called frames. Each process is also divided into pages of the same size, allowing the OS to load them into any available page frames in memory.
+    Paging allows processes to use non-contiguous memory, reducing fragmentation and maximizing memory utilization.
+    Paging is essential to implement virtual memory, which allows a process to use more memory than is physically available, by swapping pages between 
+    RAM ans disk.
+
+* What is Demand Paging and segmentation ?
+    * Demand Paging 
+        It is a memory management technique where pages of a process are loaded only when needed(on demand), rather than loading the entire process into memory once
+        Reduces the amount of memory used and minimizes loading time by only loading pages that are actually required by the process.
+    * Segemntation 
+        It is a memory management technique where memory is divided into variable size parts known as segments and allocated to a process.
+        The details about each segment are stored in a table called a segment table. Segment table is stored in one (or many) of the segments.
+        Segment table contains mainly two information about segment:
+        Base: It is the base address of the segment
+        Limit: It is the length of the segment.
+
+* what is real-time operating system and what are its types ?
+    A real-time operating system (RTOS) is a special-purpose operating system used in computers that has strict time constraints for any job to be performed 
+    and is intended to serve real time applications that possess data as it comes in , typically without buffer delays.
+    Types of RTOS:
+        Hard RTOS:
+            Guarantees that critical tasks are completed within a strict time limit.
+             Used in mission-critical applications like medical devices, aircraft control systems
+        Soft RTOS:
+            Prioritizes critical tasks but allows for some flexibility in meeting deadlines.
+            Missing a deadline may degrade performance but does not cause system failure.
+            Used in multimedia applications, telecommunications, and other scenarios where delays are undesirable but not critical.
+        Firm RTOS:
+            A mix between hard and soft RTOS. Missing a deadline is undesirable but does not result in a complete system failure.        
+            Used in systems like online transaction processing or some industrial systems where occasional deadline misses are tolerable.
+
+    
         
