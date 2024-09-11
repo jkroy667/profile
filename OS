@@ -211,3 +211,30 @@
     At time 4, P3 arrives and preempts P1 (since P3 has the shortest burst time).
     After P3 completes, the next shortest job, P2, is executed.
     Finally, P4 is executed.
+
+* Explain LRTF (Longest remaining time first)
+    It is preemptive CPU scheduling algorithem where the process with the longest remaining burst time is selected for execution.     
+    If a new process arrives with a burst time longer than the remaining time of the currently running process, the current process is preempted, and the new process is scheduled.
+    Unlike SJF, longer processes are prioritized, preventing them from being starved by shorter ones.
+    Can lead to higher average waiting times since shorter processes may have to wait for longer processes to complete. 
+    Process	Arrival Time	Burst Time
+    P1	            0	        4
+    P2	            1	        6
+    P3	            2	        5
+    At time 0, P1 starts execution (no other process has arrived).
+    At time 1, P2 arrives with a longer burst time (6) than P1's remaining time (3), so P2 preempts P1.
+    At time 2, P3 arrives with a burst time (5) that is less than P2's remaining time (6), so P2 continues executing.
+    P2 continues until completion since it has the longest remaining time.
+    Then P3 is executed because it has more remaining time than P1.
+    Finally, P1 is executed.
+
+* Explain Priority Scheduling 
+    Priority Scheduling is a CPU scheduling algorithm where each process is assigned a priority. The CPU is allocated to the process with the highest priority
+    Preemptive Priority Scheduling: If a new process with a higher priority arrives, it can interrupt the current process.
+    Non-preemptive Priority Scheduling: The CPU finishes the current process, even if a higher-priority one arrives.
+    Allows important or time-sensitive processes to run first.
+    Can cause starvation: lower-priority processes might never get executed.
+
+
+
+
