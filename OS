@@ -235,6 +235,58 @@
     Allows important or time-sensitive processes to run first.
     Can cause starvation: lower-priority processes might never get executed.
 
+* Explain Round Robin Scheduling.
+    It is CPU scheduling algorithm where each process is assigned a fixed time slice or quantum. The CPU cycles through the ready processes in a circular order,
+    given each process to execute for a fixed period. All processes get an equal share of CPU time.
+    Frequent switching between processes can reduce efficiency.
+    Too small a quantum leads to excessive context switching; too large reduces responsiveness.
 
+* Explain Producer Consumer Problem.
+    The Producer-Consumer problem is a classic problem that is used for multi-process synchronisation i.e. synchronisation between more than one processes.    
+    The job of the Producer is to generate the data, put it into the buffer, and again start generating data. While the job of the Consumer is to consume the data from the buffer.
+    What's the problem here?
+    The following are the problems that might occur in the Producer-Consumer:
+    The producer should produce data only when the buffer is not full. If the buffer is full, then the producer shouldn't be allowed to put any data into the buffer.
+    The consumer should consume data only when the buffer is not empty. If the buffer is empty, then the consumer shouldn't be allowed to take any data from the buffer.
+    The producer and consumer should not access the buffer at the same time.
+    Solution:
+    Use synchronization mechanisms like semaphores and mutexes:
+    
+    Mutex ensures that only one process (producer or consumer) accesses the buffer at a time.
+    Semaphores (empty and full) track the number of empty and filled slots in the buffer.
 
+* What is Banker's Algorithm ?
+    The Banker’s Algorithm is a deadlock avoidance algorithm used in operating systems to manage resource allocation among multiple processes.
+    Before granting a resource request, the system checks if allocating the resources will leave the system in a "safe state."
+    A safe state means that there is a sequence of processes such that each can obtain its maximum resources and complete its execution.
+    If the request leads to an unsafe state (where deadlock could occur), the request is denied.
+    The banker's algorithm is named because it checks whether a person should be sanctioned a loan amount or not to help the bank system safely simulate allocation resources.
+
+* Explain Cache.
+    Cache memory is an extremely fast memory type that acts as a buffer between RAM and the CPU.
+    It holds frequently requested data and instructions so that they are immediately available to the CPU when needed.
+
+* Diff between direct mapping and associative mapping ?
+    Direct Mapping and Associative Mapping are two techniques used in caching to determine where data is stored in the cache memory.
+    Direct Mapping:
+        In direct mapping, each block of main memory maps to exactly one location in the cache.
+        The cache is divided into multiple blocks, and each block of memory is mapped to a specific cache block based on a modulo operation (Memory Block Number % Number of Cache Blocks).
+        Multiple memory blocks map to the same cache block, causing frequent replacements (higher collision rate).
+        Potentially higher miss rates due to limited placement options.
+     Associative Mapping:
+        In associative mapping, any block of main memory can be loaded into any block of the cache.
+        The cache does not have a fixed location for a particular memory block. Instead, it uses a search mechanism (often a tag comparison) to determine if a block is present in any cache line.
+        More complex hardware required for searching (tag comparisons) since each lookup involves searching the entire cache
+
+* Diff between multitasking and multiprocessing ?
+    Multitasking:
+        Multitasking is the ability of an operating system to execute multiple tasks or processes seemingly simultaneously on a single CPU.
+        The CPU switches between tasks rapidly (context switching) to give the illusion that multiple tasks are running concurrently. Only one task is processed at any given moment.
+        Improves responsiveness and user experience by running multiple applications at once.
+        Running a web browser, music player, and text editor simultaneously on a single-core CPU.
+    Multiprocessing:
+        Multiprocessing is the ability of a system to use two or more CPUs (processors) to execute multiple processes simultaneously.
+        Each processor runs its own process independently; multiple processes can be executed in parallel, truly at the same time.
+        Increases computational power, throughput, and reliability by running processes in parallel.
+        High-performance servers, parallel computing systems, and multi-core processors in modern computers.
 
