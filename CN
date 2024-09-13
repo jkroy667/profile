@@ -13,5 +13,42 @@
       * Tree Topology: Hierarchical structure combining stars and bus. Scalable but can be affected by central bus failure.
       * Hybrid Topology: Mix of different topologies, flexible but complex to design.
     Each topology has its own use cases, depending on the needs for reliability, cost, and scalability.
-    
-      
+
+* Define bandwidth, node and link ? 
+    * Bandwidth: It refers to the maximum rate of data transfer across a network or internet connection. It is measured in bytes per second and indicates the capacity of connection to transmit data.
+    * Node: A node is any device or point in a network that can send, receive, or forward information. Examples include computers, servers, routers, or any other connected device.
+    * Link: A link is the physical or logical connection between two nodes in a network. It can be a wired connection (like cables) or wireless connection(radio,waves), enabling communication between devices.
+
+* Explain TCP model.
+    The TCP/IP model is a four-layer framework that governs how the data is transmitted over the internet.
+    Layers:
+        Application Layer: Handles communication between applications (e.g., HTTP for web browsing, SMTP for email).
+        Transport Layer: Ensures reliable data transfer between devices. TCP for reliable, ordered delivery; UDP for faster, less reliable delivery.
+        Internet Layer: Routes data accross the networks using IP address (responsible for packet addressing and routing).
+        Network Access Layer: Manages the physical transmission of data over the network (e.g., Ethernet, Wi-Fi).
+
+* explain Layers of OSI model.
+    The OSI model (Open Systems Interconnection) is a seven-layer framework that standardizes communication functions in a network.
+    Layers of the OSI Model:
+        * Physical Layer: Deals with the physical connection between devices, including cables, switches, and signal transmission.
+        * Data Link Layer: Ensures error-free data transfer between two connected nodes using MAC addresses. It organizes data into frames.
+        * Network Layer: Handles routing and forwarding of data between networks, using logical addresses like IP addresses.
+        * Transport Layer: Ensures reliable data transfer with flow control and error correction (e.g., TCP, UDP).
+        * Session Layer: Manages and controls connections between devices, establishing, maintaining, and terminating communication sessions.
+        * Presentation Layer: Translates data into a format that the application layer can understand, handling data encryption and compression.
+        * Application Layer: Provides network services to end-users and applications (e.g., email, web browsers, FTP).
+    Each layer performs a specific role, ensuring smooth communication across networks.
+
+* what is the significance of Data Link Layer.
+    The Data Link Layer is the second layer of the OSI model and ensures reliable data transfer between directly connected devices.
+        * Error Detection & Correction: Identifies and sometimes corrects errors during transmission.
+        * Framing: Organizes raw data into frames for easy transmission.
+        * Flow Control: Manages data flow to prevent overload between sender and receiver.
+        * MAC Addressing: Uses MAC addresses to ensure data is sent to the correct device on a local network.
+        * Access Control: Controls device access to the communication medium, preventing collisions.
+    the Data Link Layer ensures organized, error-free data transmission between devices on the same network.
+
+* Define gateway, difference between gateway and router ?
+    A node that is connected to two or more networks is commonly known as a gateway. It is also known as a router. It is used to forward messages from one network to another.
+    Both the gateway and router regulate the traffic in the network. 
+    Differences between gateway and router: A router sends the data between two similar networks while gateway sends the data between two dissimilar networks.
