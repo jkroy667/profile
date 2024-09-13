@@ -1,0 +1,17 @@
+* Define network 
+    A network is a group of interconnected devices that communicate to share resources and data.
+    It includes hardware (like routers and cables) and software (like protocols) to facilitate this communication.
+    Network can range from small (LAN) to large (WAN) and Internet, which connects devices globally.
+
+* What do you mean by network topology, and explain types of them ?
+    Network topology refers to the arrangement of devices in a network and how they are connected.
+    Types of Network topology:
+      * Bus Topology: Device share a single central cable. Simple but if the cable fails, the network goes down.
+      * Star Topology: Device connected to a central hub. Reliable, but failure of the hub affects all.
+      * Ring Topology: Devices form a close loop. Fast data transmission, but one failure can disrupt the network
+      * Mesh Topology: Every device connects to every other device. Very reliable but costly and complex.
+      * Tree Topology: Hierarchical structure combining stars and bus. Scalable but can be affected by central bus failure.
+      * Hybrid Topology: Mix of different topologies, flexible but complex to design.
+    Each topology has its own use cases, depending on the needs for reliability, cost, and scalability.
+    
+      
