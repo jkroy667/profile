@@ -51,4 +51,47 @@
 * Define gateway, difference between gateway and router ?
     A node that is connected to two or more networks is commonly known as a gateway. It is also known as a router. It is used to forward messages from one network to another.
     Both the gateway and router regulate the traffic in the network. 
-    Differences between gateway and router: A router sends the data between two similar networks while gateway sends the data between two dissimilar networks.
+    Differences between gateway and router: A router sends the data between two similar networks using same protocol while gateway sends the data between two dissimilar networks using different protocols.
+
+* What does ping command do ? 
+    A Ping commands checks the network connectivity between different devices. It sends data packet to a target and wait for its response, helping check if the device is reachable and measuring the round-trip time.
+    In short, ping is used for diagnosing network connection issues.
+
+* What is DNS, DNS forwarder and NIC ?
+    * DNS:
+        A DNS translates human-readable domains like (www.example.com) into IP addresses (192.168.1.1) that computer use to identify each other in a network.
+        Without DNS, users must know the IP address of the web page that you wanted to access.
+    * DNS forwader:
+        It is a server that forwards DNS queries to an external DNS server (often on the internet) when it doesn;t know the answer.
+        It also reduces lookups by caching the responses.
+    * NIC (Network interface card):
+        A NIC is a hardware component that allows a computer to connect to a network. It provides the physical interface for sending and receiving data.
+        Every NIC has its own MAC address that identifies the PC on the network.
+
+* data flow through my local pc.
+    PC → Sends request to router using local IP.
+    Router → Uses NAT to convert local IP to public IP.
+    Router → Forwards request to the internet (public network).
+    Internet → Returns data to the router (public IP).
+    Router → Translates public IP back to PC's local IP and forwards the data.
+
+* What is NAT (Network Address translator) and how it works ?
+    NAT is a method used by routers to map private IP addresses used within a local network to a single public IP address (or a few public IP addresses) when accessing external networks like the internet.
+    It allows multiple devices on a local network to share a single public IP address, improving security and saving IPv4 addresses.
+    whats the flow
+        Your laptop (IP: 192.168.1.2) sends a request to visit www.example.com.
+        The router changes the source IP of the request to its public IP (e.g., 203.0.113.5).
+        The website responds to the router’s public IP.
+        The router then translates the public IP back to your laptop’s private IP (192.168.1.2) and forwards the data.
+
+* What is MAC address ?
+    A media access control address (MAC address) is a unique identifier assigned to a network interface controller (NIC) for use as a network address in communications within a network segment.
+    Your laptop sends a message to another device on your network. It uses the device’s MAC address to ensure the message is delivered to the right device at the local level,
+    while IP addresses handle routing outside the network. Switches use MAC addresses to forward frames to the correct device within a network.
+
+* What is IP address, private IP address, public IP address, APIPA ? 
+    
+
+
+        
+    
