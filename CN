@@ -90,6 +90,80 @@
     while IP addresses handle routing outside the network. Switches use MAC addresses to forward frames to the correct device within a network.
 
 * What is IP address, private IP address, public IP address, APIPA ? 
+    An IP address is a unique address that identifies a device on the internet or a local network. IP stands for "Internet Protocol,"
+    which is the set of rules governing the format of data sent via the internet or local network.
+    IPv4: 32-bit address (e.g., 192.168.1.1)
+    IPv6: 128-bit address (e.g., 2001:0db8:85a3:0000:0000:8a2e:0370:7334)
+    * Private IP Address:
+        A Private IP address is used within local networks (like home or office networks) and cannot be accessed directly from the internet. 
+        If you want to access the internet on these private IPs, you must use a proxy server or NAT server.
+    * Public IP Address:
+        A Public IP address is assigned by your Internet Service Provider (ISP) and is unique across the entire internet.
+        Devices with public IPs can be accessed directly over the internet.
+        Websites, servers, and routers that connect directly to the internet have public IP addresses.
+    * APIPA (Automatic Private IP Addressing):
+        APIPA is a feature used by devices when DHCP (Dynamic Host Configuration Protocol) fails to assign an IP address.
+        It automatically assigns a self-generated IP in the range 169.254.0.0 – 169.254.255.255, allowing basic network connectivity within the local network but without internet access
+
+* Difference between IPv4 and IPv6 
+    Address Length: IPv4 uses 32-bit addresses (e.g., 192.168.1.1), while IPv6 uses 128-bit addresses (e.g., 2001:0db8::7334).
+    Address Space: IPv4 supports around 4.3 billion addresses, whereas IPv6 has a virtually unlimited supply (340 undecillion).
+    IPv4 often requires manual configuration or DHCP, while IPv6 supports automatic address configuration (SLAAC).
+
+* What is Subnet ?
+    A subnet (short for subnetwork) is a smaller network created by dividing a larger network into multiple segments. Subnets help organize and manage a network more efficiently.
+    They improve performance and security by reducing the size of broadcast domains and controlling traffic within smaller network segments.
+    Each subnet has its own range of IP addresses, defined by a subnet mask (e.g., 255.255.255.0 for a /24 subnet).
+
+* what are firewalls ?
+    Firewalls are security devices or software that control network traffic based on predefined rules to protect a network or device.
+    They act as a barrier between a trusted internal network and untrusted external networks, like the internet, to prevent unauthorized access and threats.
+    Traffic Filtering: Determines which data packets are allowed or blocked.
+    Protection: Shields networks from unauthorized access and cyber threats.
+    Types: Include network firewalls (protect entire networks) and host-based firewalls (protect individual devices).
+
+* what are different type of delays ?
+    The delays, here, means the time for which the processing of a particular packet takes place.
+    * Propagation Delay:
+        Time taken for a signal to travel from the source to the destination. Depends on the distance between devices and the speed of the transmission medium
+    * Transmission Delay:
+        Time required to push all the packet’s bits into the link. Determined by the packet size and the link's bandwidth
+    * Processing Delay:
+        Time taken by routers or switches to process packet headers and make routing decisions.
+    * Queuing Delay:
+        Time a packet spends waiting in a queue before it can be transmitted.
+    These delays collectively contribute to the overall latency experienced in network communications.
+
+* what is 3 way handshaking ?
+    Three-way Handshake is a process used in TCP to establish a reliable connection between client and a server before data transmission begins. It ensures both parties are ready for communication
+    and agrees on initial parameters.
+    Steps of Three-Way Handshaking:
+        * SYN (Synchronize): The client sends a SYN packet to the server to initiate a connection and inform the server of its initial sequence number.
+        * SYN-ACK (Synchronize-Acknowledge): The server responds with a SYN-ACK packet, acknowledging the client's SYN request and sending its own SYN packet with a sequence number.
+        * ACK (Acknowledge): The client sends an ACK packet back to the server, acknowledging the server’s SYN-ACK packet.
+    After these steps, a connection is established, and data can be transmitted. It allows you to transfer multiple TCP socket connections in both directions at the same time.
+
+* difference between API gateway, reverse proxy and load balancer 
+    API gateway:
+        Function: Manages and routes API requests, handles cross-cutting concerns like authentication, rate limiting, and logging. It provides a single entry point for all API requests.
+        Use Case: Used to aggregate multiple microservices, handle API versioning, and manage API traffic and security.
+    Reverse Proxy:
+        Function: Sits between clients and servers, forwarding client requests to the appropriate server and returning responses. It can also handle SSL termination and caching.
+        Use Case: Used to hide server details, balance loads, and provide additional security features like SSL encryption.
+    Load Balancer:
+        Function: Distributes incoming network or application traffic across multiple servers to ensure no single server becomes overloaded, improving performance and reliability.
+        Use Case: Used to ensure high availability and reliability by distributing client requests evenly among a pool of servers.
+
+* 
+    
+        
+
+        
+    
+
+
+
+    
     
 
 
