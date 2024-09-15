@@ -154,7 +154,10 @@
         Function: Distributes incoming network or application traffic across multiple servers to ensure no single server becomes overloaded, improving performance and reliability.
         Use Case: Used to ensure high availability and reliability by distributing client requests evenly among a pool of servers.
 
-* 
+* What is RSA algorithm ?
+    RSA algorithm is an asymmetric cryptography algorithm. Asymmetric actually means that it works on two different keys i.e. Public Key and Private Key
+    A client (for example browser) sends its public key to the server and requests for some data. The server encrypts the data using the client's public key and sends the encrypted data.
+    Client receives this data and decrypts it. Since this is asymmetric, nobody else except the browser can decrypt the data even if a third party has the public key of the browser.
     
         
 
