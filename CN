@@ -179,10 +179,53 @@
         Connection-Oriented: Establishes a connection between sender and receiver before data transmission (three-way handshake).
         Reliable: Ensures that data packets are delivered in order, with error checking and retransmission if packets are lost.
         Use-Case: Used in applications where accuracy and reliability are critical, like web browsing (HTTP/HTTPS), file transfer (FTP), and email (SMTP).
+        it is because it provides flow control and acknowledgment of data
     UDP:
         Connectionless: No connection is established before data transmission; packets are sent directly.
         Unreliable: Does not guarantee the delivery of packets or ensure the order of arrival, with no retransmission for lost packets.
         Suitable for applications where speed is important and minor data loss is acceptable, such as video streaming, online gaming, or VoIP.
+        UDP has only the basic error checking mechanism using checksums.
+
+* what is checkSum ?
+    In UDP (User Datagram Protocol), a checksum is a simple mechanism used for error detection. It verifies whether the data in a packet has been altered during transmission.
+    The sender calculates a checksum by adding the values of the packet's data, and stores this in the UDP header.
+    The packet, along with the checksum, is sent to the receiver.
+    The receiver recalculates the checksum. If it matches the one in the header, the data is assumed to be intact. If not, the packet is discarded.
+
+* What happens when you enter “google.com” (very very famous question) 
+    Caching Check: Before making a request, the browser checks if a cached version of the website exists. If valid, it uses the cached data to load the page faster. If not, the process continues.
+    DNS Resolution: The domain "google.com" is translated into an IP address using DNS (Domain Name System). This could also be cached from previous visits, speeding up the process.
+    TCP Connection: The browser establishes a connection with Google's server via a 3-way handshake (SYN, SYN-ACK, ACK).
+    HTTP/HTTPS Request: The browser sends a request to the server for the webpage. If using HTTPS, an SSL/TLS handshake ensures a secure connection.
+    Server Response: The server processes the request and sends back resources (HTML, CSS, JavaScript, images). These resources can be cached by the browser or a CDN to improve future load times.
+    Rendering the Page: The browser renders the page, applying styles, scripts, and content to display the webpage to the user.
+    Subsequent Caching: The browser may store certain resources in its cache for future requests, reducing load times when revisiting the site.
+
+* Hubs Vs Switches
+    Hubs:
+        A hub is a basic networking device that connects multiple devices in a network.
+        It broadcasts data to all devices connected, leading to potential data collisions.
+    Switches:
+        A switch is more advanced and directs data only to the intended device based on MAC addresses.
+        Reduces data collisions and improves network efficiency.
+
+* explain VPN, advantages and disadvantages of it 
+    A VPN creates a secure, encrypted connection over a public network (like the internet) to protect data transmission and ensure privacy.
+    Advantages:
+        Security: Encrypts data to protect it from unauthorized access.
+        Privacy: Masks the user's IP address, hiding their location and identity online.
+        Access: Allows users to access restricted or region-blocked content by bypassing geo-restrictions.
+    Disadvantages:
+        Slower speeds: Encryption and rerouting through servers can reduce internet speed.
+        Trust issues: Users must trust the VPN provider not to log or misuse their data.
+        Potential legal concerns: Using VPNs to bypass restrictions can lead to legal consequences in some regions.
+
+* What are LANs ?
+    A local area network (LAN) is a collection of devices connected together in one physical location, such as a building, office, or home.
+    A LAN can be small or large, ranging from a home network with one user to an enterprise network with thousands of users and devices in an office or school.
+
+    
+    
 
 
     
