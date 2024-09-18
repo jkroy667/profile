@@ -158,6 +158,34 @@
     RSA algorithm is an asymmetric cryptography algorithm. Asymmetric actually means that it works on two different keys i.e. Public Key and Private Key
     A client (for example browser) sends its public key to the server and requests for some data. The server encrypts the data using the client's public key and sends the encrypted data.
     Client receives this data and decrypts it. Since this is asymmetric, nobody else except the browser can decrypt the data even if a third party has the public key of the browser.
+
+* What is HTTP and HTTPS protocol ? 
+    HTTP is the HyperText Transfer Protocol which defines the set of rules and standards on how the information can be transmitted on the World Wide Web (WWW).
+    It helps the web browsers and web servers for communication. It is a ‘stateless protocol’ where each command is independent with respect to the previous command.
+    HTTP is an application layer protocol built upon the TCP. It uses port 80 by default. HTTPS is the HyperText Transfer Protocol Secure or Secure HTTP. 
+    It is an advanced and a secured version of HTTP. On top of HTTP, SSL/TLS protocol is used to provide security.
+    It enables secure transactions by encrypting the communication and also helps identify network servers securely. It uses port 443 by default.
+
+* What is SMTP protocol ? 
+    SMTP (Simple Mail Transfer Protocol) is a standard protocol used for sending emails across the Internet. It is responsible for the transmission of emails from a client (email sender) to a mail server
+    Client to Server: The email client (like Gmail or Outlook) sends the email to the SMTP server. 
+    Server to Server: The SMTP server forwards the email to the recipient's email server.
+    Server to Client: The recipient retrieves the email using protocols like POP3 or IMAP.
+    SMTP is not used for receiving emails but strictly for sending, ensuring efficient communication between email servers.
+
+* TCP and UDP protocol, prepare differences ?
+    TCP (Transmission Control Protocol) and UDP (User Datagram Protocol) are both transport layer protocols used for data transmission over networks, but they differ in functionality and use cases.
+    TCP:
+        Connection-Oriented: Establishes a connection between sender and receiver before data transmission (three-way handshake).
+        Reliable: Ensures that data packets are delivered in order, with error checking and retransmission if packets are lost.
+        Use-Case: Used in applications where accuracy and reliability are critical, like web browsing (HTTP/HTTPS), file transfer (FTP), and email (SMTP).
+    UDP:
+        Connectionless: No connection is established before data transmission; packets are sent directly.
+        Unreliable: Does not guarantee the delivery of packets or ensure the order of arrival, with no retransmission for lost packets.
+        Suitable for applications where speed is important and minor data loss is acceptable, such as video streaming, online gaming, or VoIP.
+
+
+    
     
         
 
