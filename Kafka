@@ -42,6 +42,49 @@
     * Each message in a partition is consumed by only one consumer in the group, allowing for load balancing.
     * Multiple consumer groups can read the same data independently, enabling different applications to process data concurrently.
 
+9. What is the maximum size of a message that Kafka can receive?
+    * By default, the maximum size of a Kafka message is 1MB (megabyte). The broker settings allow you to modify the size. Kafka, on the other hand, is designed to handle 1KB messages as well.
+
+10. What are some of the features of Kafka?
+    * Kafka is a messaging system built for high throughput and fault tolerance.
+    * Kafka has a built-in patriation system known as a Topic.
+    * Kafka Includes a replication feature as well.
+    * Kafka provides a queue that can handle large amounts of data and move messages from one sender to another.
+    * Kafka can also save the messages to storage and replicate them across the cluster.
+    * For coordination and synchronization with other services, Kafka collaborates with Zookeeper.
+
+11. What are some of the disadvantages of Kafka?
+    * Complexity: Setting up and managing a Kafka cluster can be complex
+    * Resource Intensive: Kafka can consume significant system resources, especially in high-throughput scenarios.
+    * Message Ordering: While messages are ordered within partitions, cross-partition ordering is not guaranteed.
+    * Latency: In some cases, there may be higher latency compared to other messaging systems for certain use cases.
+
+12. Tell me about some of the real-world usages of Apache Kafka.
+    * Log Aggregation: Collecting and consolidating logs from multiple services for analysis.
+    * Stream Processing: Real-time data processing for applications like fraud detection and recommendation systems.
+    * Event Sourcing: Storing state changes as a sequence of events for applications requiring audit trails.
+    * Data Integration: Connecting various data sources and sinks, enabling data flow between systems.
+    * Metrics Collection: Monitoring and analyzing metrics from different services in real-time for operational insights.
+
+13. What are the benefits of using clusters in Kafka?
+    * Kafka cluster is basically a group of multiple brokers. They are used to maintain load balance.
+    * Because Kafka brokers are stateless, they rely on Zookeeper to keep track of their cluster state.
+    * A single Kafka broker instance can manage hundreds of thousands of reads and writes per second, and each broker can handle TBs of messages without compromising performance.
+    * Zookeeper can be used to choose the Kafka broker leader. Thus having a cluster of Kafka brokers heavily increases the performance.
+
+14. Describe partitioning key in Kafka.
+    * A partitioning key in Kafka is a key used to determine which partition of a topic a message will be sent to.
+    * When a producer sends a message, it can specify a key, which Kafka uses to compute a hash. This hash determines the partition, ensuring that all messages with the same key are sent to the same partition.
+    * This guarantees message order for that key and helps with load balancing across partitions.
+
+15. What is the purpose of partitions in Kafka?
+    * Partitions allow a single topic to be partitioned across numerous servers from the perspective of the Kafka broker. 
+    * This allows you to store more data in a single topic than a single server can. 
+    * If you have three brokers and need to store 10TB of data in a topic, one option is to construct a topic with only one partition and store all 10TB on one broker.
+    * Another alternative is to build a three-partitioned topic and distribute 10 TB of data among all brokers. A partition is a unit of parallelism from the consumer's perspective
+
+
+
 
 
 
