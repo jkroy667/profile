@@ -1,64 +1,85 @@
 1. Explain the concept of Container Orchestration.
-    * It provides a automatic deployment, scaling, and management of containerized applications so that the developers do not have any worry about that the underlying infrastructure.
+     * It provides a automatic deployment, scaling, and management of containerized applications so that the developers do not have any worry about that the underlying infrastructure.
 
 2. What is a Pod in Kubernetes ?
-    * A cluster of one or more Linux containers makes up a Kubernetes pod. Smallest unit of kubernetes application.
-    * kubctl get pods -n (namespace)
+     * A cluster of one or more Linux containers makes up a Kubernetes pod. Smallest unit of kubernetes application.
+     * kubctl get pods -n (namespace)
 
 3. How does Kubernetes handle container scaling?
-    * Kubernetes scales containers using the Horizontal Pod Autoscaler (HPA) for scaling pods, Vertical Pod Autoscaler (VPA) for adjusting resource limits, and Cluster Autoscaler for adjusting the number of nodes.
+     * Kubernetes scales containers using the Horizontal Pod Autoscaler (HPA) for scaling pods, Vertical Pod Autoscaler (VPA) for adjusting resource limits, and Cluster Autoscaler for adjusting the number of nodes.
 
 4. What is Kubelet ?
-    * Kubelet is a Kubernetes agent that runs on each node, ensuring containers are running in pods as specified by the control plane. 
-      It monitors pod health, manages container lifecycle, and communicates with the API server to ensure the desired state is maintained.
+     * Kubelet is a Kubernetes agent that runs on each node, ensuring containers are running in pods as specified by the control plane. 
+       It monitors pod health, manages container lifecycle, and communicates with the API server to ensure the desired state is maintained.
 
 5. Explain the difference between a StatefulSet and a Deployment.
-    * Deploymnet: It enables you to control your application’s state and ensure that the right number of replicas are always running.
-    * Statefulset: It helpful in managing stateful applications that need persistent storage with a dependable network ID.
+     * Deploymnet: It enables you to control your application’s state and ensure that the right number of replicas are always running.
+     * Statefulset: It helpful in managing stateful applications that need persistent storage with a dependable network ID.
 
 6. What is a Service in Kubernetes?
-    * A Service in Kubernetes is an abstraction that defines a stable network endpoint to expose a set of pods, enabling communication between components or external access to the pods.
-      It ensures that traffic is evenly distributed among the pods.
+     * A Service in Kubernetes is an abstraction that defines a stable network endpoint to expose a set of pods, enabling communication between components or external access to the pods.
+       it ensures that traffic is evenly distributed among the pods.
 
 7. How does Kubernetes manage configuration?
-    * Kubernetes manages configuration using ConfigMaps for storing non-sensitive data like environment variables and Secrets for sensitive information like passwords.
-      These can be mounted as files or environment variables in pods, allowing for dynamic configuration without rebuilding images.
+     * Kubernetes manages configuration using ConfigMaps for storing non-sensitive data like environment variables and Secrets for sensitive information like passwords.
+       These can be mounted as files or environment variables in pods, allowing for dynamic configuration without rebuilding images.
 
 8. Describe the role of a Master node in Kubernetes.
-    * The Master node in Kubernetes controls the cluster, managing the API server, scheduler, controller manager, and etcd.
-    * It handles scheduling of pods, monitors cluster state, manages workloads, and stores configuration data.
+     * The Master node in Kubernetes controls the cluster, managing the API server, scheduler, controller manager, and etcd.
+     * It handles scheduling of pods, monitors cluster state, manages workloads, and stores configuration data.
 
 9. What is the role of the kube-proxy in Kubernetes and how does it facilitate communication between Pods?
-    * The kube-proxy in Kubernetes manages network rules on each node to enable communication between pods.
-    * It routes traffic to the correct pod within a service, ensuring load balancing and maintaining network connections between pods and external clients.
+     * The kube-proxy in Kubernetes manages network rules on each node to enable communication between pods.
+     * It routes traffic to the correct pod within a service, ensuring load balancing and maintaining network connections between pods and external clients.
 
 10. Explain the concept of Ingress in Kubernetes.
-    * Ingress in Kubernetes is an API object that manages external access to services within a cluster, typically HTTP/HTTPS.
-    * It defines routing rules, enabling services to be accessed through URLs, load balancing, SSL termination, and name-based virtual hosting.
+     * Ingress in Kubernetes is an API object that manages external access to services within a cluster, typically HTTP/HTTPS.
+     * It defines routing rules, enabling services to be accessed through URLs, load balancing, SSL termination, and name-based virtual hosting.
 
 11. What is ConfigMap ?
-    * A ConfigMap in Kubernetes is an API object that allows you to store non-sensitive configuration data as key-value pairs.
-    * It enables applications to access configuration information dynamically without hardcoding it into container images, making it easier to manage and update configurations.
+     * A ConfigMap in Kubernetes is an API object that allows you to store non-sensitive configuration data as key-value pairs.
+     * It enables applications to access configuration information dynamically without hardcoding it into container images, making it easier to manage and update configurations.
 
 12. Describe the role of etcd in Kubernetes.
-    * etcd in Kubernetes is a distributed key-value store that serves as the primary data store for cluster configuration, state, and metadata.
-    * It stores all cluster data, including information about nodes, pods, services, and configurations, ensuring consistency and reliability across the Kubernetes cluster.
+     * etcd in Kubernetes is a distributed key-value store that serves as the primary data store for cluster configuration, state, and metadata.
+     * It stores all cluster data, including information about nodes, pods, services, and configurations, ensuring consistency and reliability across the Kubernetes cluster.
 
 13. How do rolling updates work in a Deployment?
-    * In a Deployment, rolling updates gradually replace old pods with new ones to minimize downtime.
-    * Kubernetes creates new pods with the updated configuration while keeping a specified number of old pods running.
-    * Once the new pods are ready and healthy, the old pods are terminated, ensuring a smooth transition without service interruption.
+     * In a Deployment, rolling updates gradually replace old pods with new ones to minimize downtime.
+     * Kubernetes creates new pods with the updated configuration while keeping a specified number of old pods running.
+     * Once the new pods are ready and healthy, the old pods are terminated, ensuring a smooth transition without service interruption.
 
 14. What is a Namespace in Kubernetes? 
-    * A Namespace in Kubernetes is a logical partitioning of the cluster that allows for grouping and isolating resources.
-    * It enables multiple users or teams to share the same cluster while keeping their resources, such as pods, services, and deployments, organized and separated.
+     * A Namespace in Kubernetes is a logical partitioning of the cluster that allows for grouping and isolating resources.
+     * It enables multiple users or teams to share the same cluster while keeping their resources, such as pods, services, and deployments, organized and separated.
 
 15. Explain the use of Labels and Selectors in Kubernetes.
-    * Labels in Kubernetes are key-value pairs attached to objects (like pods) that provide metadata for organizing and selecting resources
-    * Selectors are used to filter and identify sets of resources based on these labels, enabling operations such as grouping, management, and service targeting.
+     * Labels in Kubernetes are key-value pairs attached to objects (like pods) that provide metadata for organizing and selecting resources
+     * Selectors are used to filter and identify sets of resources based on these labels, enabling operations such as grouping, management, and service targeting.
 
 16. What is PV and PVC in kubernetes ?
-    * A Persistent Volume (PV) in Kubernetes is a storage resource that provides persistent storage independent of pod lifecycle. 
-    * A Persistent Volume Claim (PVC) is a user's request for storage, specifying size and access modes, which binds to a matching PV to allow pods to use that storage.
+     * A Persistent Volume (PV) in Kubernetes is a storage resource that provides persistent storage independent of pod lifecycle. 
+     * A Persistent Volume Claim (PVC) is a user's request for storage, specifying size and access modes, which binds to a matching PV to allow pods to use that storage.
 
-    
+17. Explain the differences between a DaemonSet and a ReplicaSet.
+     * A DaemonSet ensures that a copy of a pod runs on all (or specific) nodes in a Kubernetes cluster, typically used for background tasks like logging or monitoring.
+     * A ReplicaSet ensures a specified number of identical pod replicas are running at all times, primarily used for scaling and maintaining application availability.
+
+18. How can you achieve communication between Pods in different Nodes?
+     * Pods in a cluster of k8s can speak to one another by default use the internal IP addresses. The underlying container runtime or network plugin gives a virtual network overlay to this communication.
+
+19. What advantages does Kubernetes have?
+      Container Orchestration
+      Automated Load Balancing
+      Auto Scaling
+      Rolling Update & Rollbacks
+      Service Discovery and Load Balancing
+      Storage Orchestration
+      Self-Healing
+      Secrets and Configuration Management
+      Multi-Cloud and Hybrid Cloud Support
+      Role-Based Access Control (RBAC)
+      Pods and Multi-Container Support
+      Monitoring and Logging
+
+20. 
