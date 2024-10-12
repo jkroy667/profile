@@ -36,4 +36,29 @@
     * Ingress in Kubernetes is an API object that manages external access to services within a cluster, typically HTTP/HTTPS.
     * It defines routing rules, enabling services to be accessed through URLs, load balancing, SSL termination, and name-based virtual hosting.
 
+11. What is ConfigMap ?
+    * A ConfigMap in Kubernetes is an API object that allows you to store non-sensitive configuration data as key-value pairs.
+    * It enables applications to access configuration information dynamically without hardcoding it into container images, making it easier to manage and update configurations.
+
+12. Describe the role of etcd in Kubernetes.
+    * etcd in Kubernetes is a distributed key-value store that serves as the primary data store for cluster configuration, state, and metadata.
+    * It stores all cluster data, including information about nodes, pods, services, and configurations, ensuring consistency and reliability across the Kubernetes cluster.
+
+13. How do rolling updates work in a Deployment?
+    * In a Deployment, rolling updates gradually replace old pods with new ones to minimize downtime.
+    * Kubernetes creates new pods with the updated configuration while keeping a specified number of old pods running.
+    * Once the new pods are ready and healthy, the old pods are terminated, ensuring a smooth transition without service interruption.
+
+14. What is a Namespace in Kubernetes? 
+    * A Namespace in Kubernetes is a logical partitioning of the cluster that allows for grouping and isolating resources.
+    * It enables multiple users or teams to share the same cluster while keeping their resources, such as pods, services, and deployments, organized and separated.
+
+15. Explain the use of Labels and Selectors in Kubernetes.
+    * Labels in Kubernetes are key-value pairs attached to objects (like pods) that provide metadata for organizing and selecting resources
+    * Selectors are used to filter and identify sets of resources based on these labels, enabling operations such as grouping, management, and service targeting.
+
+16. What is PV and PVC in kubernetes ?
+    * A Persistent Volume (PV) in Kubernetes is a storage resource that provides persistent storage independent of pod lifecycle. 
+    * A Persistent Volume Claim (PVC) is a user's request for storage, specifying size and access modes, which binds to a matching PV to allow pods to use that storage.
+
     
