@@ -1,0 +1,106 @@
+Keywords in HLD
+
+LOAD BALANCER
+1. Server failover:   		                    fast switch to other server, solved by load balancer
+2. Scale up :    			                        verticals scaling
+3. Scale out:    			                        Horizontal scaling
+4. Sticky session(stateful Arch):             If UserA’s session data is stored in server A, Auth request should redirect to server A only.  Adding removing server difficult.
+
+DATABASE REPLICATION
+1. Reliability: 		                        achieved through database replication through master slave
+2. High availability                        if db gets down redirected to other master or slave server.
+3. CDN(Content delivery Network)            store static contents (image, css, javascript, image) in CDNs.
+4. Sharding        		                      scale db, hash function used to find the associated shard, ex. user_id%4. Choose sharing key (one or more column) here user_id is key.
+5. Resharding        		                    shard data exhaust due to uneven data distribution, update shard function move data around, consistent hashing used to solve.
+6. Celebrity problem:   		                imagine Katy Perry, Justin Bieber all end-up on same shard. To solve allocate a dedicate shard for each celebrity.
+7. Join and de-normalisation: 	            difficult to perform join operations across database shards.
+
+
+CACHE
+1. Read-through cache                                Read data from db if not present in cache, and store in it.
+2. Decide when to use cache                          Read frequent and write infrequent.
+3. Expiration Policy.                                Choose wisely not too short and not too long.
+4. Consistency.                                      Make synchronise data updation in data store and cache.
+5. Mitigating failures(single point of failure).     Have multiple cache servers across different data centres.
+6. Cache Eviction.                                   When cache is full, add request can remove existing item, can use (LFU or FIFO) to remove  
+7. Cache miss                                        when data is not present in cache and had to read from database 
+
+CDNs(Content Delivery Network)
+1. Cost                    caching infrequent assets, no benefit, move out from CDN
+2. Cache Expiry            set appropriate time
+3. CDN fallback.           Should handle CDN failure, If fails redirect to the source origin.
+4. Invalidating files.     Remove file from before it expires, by apis or versioning.   
+
+Data Center setup:
+1. Traffic redirecting:         GeoDNS is used to redirect traffic to nearest data centre.
+2. Data Synchronisation:        take multiple copies in different data centres.
+3. Test and Deployment:         with mufti-data centre, test application in very region.
+
+Automated deployment process:
+1. Automation:                          automate deploy code, infrastructure, configurations across env.
+2. CI/CD:                               continuous testing and automated release of software.
+3. Version Control Integration:         code changes are automatically deployed when merged or committed.
+4. Rollback Capabilities:               quickly rollback to previous version in case of issue.
+5. Multi-Env support:                   development, testing, and production, ensuring consistent deployment processes.
+6. Automated tools:                     Jenkins, Ansible, Kubernetes, Terraform, Docker
+7. Go critic
+
+Message Queue:
+1. Decouple components:                 component scale independently,     
+2. Asynchronous Communication:          buffer and distributes asynchronous requests.
+3. Producer:                            produces event/message in topic
+4. Consumer:                            consumes event/message by subscribing the topic.  
+
+Logging, metrics, automation
+1. Logging:         monitoring error logs, identify errors and problems in the system.
+2. Metrics:         understand health status, host metrics(cpu, ram…), Aggregate level metric (entire database, cache…), key business metrics( daily active user….)
+3. Automation:      CI code check-in is verified through automation. Automate builds, test, deploy process 
+
+System for Million of Users and beyond
+1. Keep web tier stateless
+2. Build redundancy at each tier.
+3. Cache data as much as you can.
+4. Support multiple data centres.
+5. Host static content in CDNs.
+6. Scale your data tier by sharing.
+7. Split tiers into individual services.
+8. Monitor your system ans use automated tools.
+
+Estimate twitter QPS(query per second) and storage requirements Tips,
+1. Rounding and Approximation.
+2. Write down your assumptions
+3. Label unit like 5MB or 5GB
+4. Commonly asked back-of-the-envelope estimations:  QPS, peak QPS, storage, cache etc.
+
+
+Rate Limiter 
+1. Request block:                                                          2 post per sec, create 10 accounts per day per IP, claim reward no more than 2 time a week from same device.
+2. Prevent resource starvation:                                            prevents DOS attacks, by blocking the excess calls. Twitter limits 300 per 3 hour.
+3. Reduce Cost:                                                            important when use third party APIs,
+4. Prevent server overloading
+5. Client-side rare limiter or server-side rare limiter.
+6. High fault tolerance:                                                    if any problems, not affect the entire system. 
+7. Rate limiter middleware:                                                 place in the middle of client and the API server.
+8. Status code 429:                                                         too many request
+9. Types of bucket we need:                                                 per API 1 bucket, per IP bucket or global bucket.
+10. Token bucket:                                                           token are filled per minute like 4 tokens per min. Per request takes 1 token to execute. problem  with burst of request.
+11. Leaking bucket:                                                         request are stored in queue and processed on regular intervals. Problem with burst of old request
+12. Fixed window counter:                                                   divides timeline into fixed time window and assign a counter. Problem of burst of request at the edges.
+13. Sliding window log algorithm:                                           maintains a timestamp of request.
+14. Sliding window counter algorithm:                                       combination of fixed window and sliding window log.
+15. Race condition:                                                         highly concurrent environment. Mutex or locks should be used.
+16. Synchronisation issue:                                                  When using multiple rate limiter synchronisation is required. Solution use sticky session. Not advisable because of scalability issue, better solution use centralised data store like redis.
+
+Consisting Hashing
+1. Horizontal Scaling
+2. Rehashing problem:                    hash(key) % N, N is number of servers, well when size of pool is fixed and data distribution is even, fails when pool updates
+3. Cache Miss when pool update:          consisting Hashing solves the problem 
+4. Definition:                           Consistent hashing is a special kind of hashing such that when a hash table is re-sized and consistent hashing is used, only k/n keys need to be remapped on average, k = keys, & n= slots
+5. Hashing functions:                    SHA-1
+6. Hash servers:                         can map based on server’s IP address 
+7. Hash Keys:                            different from what used in reshaping problem.
+8. Server lookup:                        go clockwise from key position on the ring until a server is found.
+9. Add  or remove server:                small fraction of keys need to be redistributed.
+10. Issues with it:                      partitions are not uniform, can be very small or fairly large therefore non uniform distribution of keys.
+11. Virtual Nodes:                       Kind of solves the issue, virtually represent a server in the ring, by again hash the server. In real world system, number of virtual node is much larger.
+12. Standard deviation:                  As no. of virtual node increases standard deviation of keys distribution to servers become small.
