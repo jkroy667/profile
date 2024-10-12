@@ -1,0 +1,49 @@
+1. What are the traditional methods of message transfer? How is Kafka better from them?
+    * Traditional methods of message transfer include message queues (like RabbitMQ) and publish-subscribe systems (like JMS). 
+      These systems often have limitations in scalability, fault tolerance, and handling large volumes of real-time data.
+    * Kafka is better because it offers:
+        * Scalability through partitioning and replication across multiple brokers.
+        * Fault tolerance by replicating data across nodes.
+        * High throughput for handling large amounts of data with low latency.
+        * Durability with persistent storage.
+        * Decoupling of producers and consumers allowing consumers to read messages at their own pace.
+
+2. What are the major components of Kafka?
+    * The major components of Kafka are:
+        * Producer: Publishes messages to topics.
+        * Consumer: Subscribes to topics and processes messages.
+        * Broker: Stores and manages messages in partitions.
+        * Topic: A category to which records are sent.
+        * Partition: A division of a topic for parallel processing.
+        * ZooKeeper: Manages metadata and coordinates the Kafka cluster. (Note: Being replaced by KRaft in newer versions).
+
+3. What do you mean by a Partition in Kafka?
+    * A partition in Kafka is a subdivision of a topic that stores an ordered sequence of records. Partitions allow Kafka to distribute data across multiple brokers, enabling parallel processing and scalability.
+    * Each partition is identified by an offset, which helps consumers keep track of the messages they have read.
+
+4. What do you mean by zookeeper in Kafka and what are its uses?
+    * ZooKeeper in Kafka is a centralized service used for managing metadata, coordinating brokers, and tracking the status of nodes in a Kafka cluster.
+    * It helps with leader election for partitions, managing configurations, and maintaining information about topics, brokers, and consumer groups, ensuring the reliability and high availability of the Kafka cluster.
+
+5. Can we use Kafka without Zookeeper? 
+    * Kafka can now be used without ZooKeeper as of version 2.8. The release of Kafka 2.8.0 in April 2021 gave us all the opportunity to try it out without ZooKeeper.
+    * However, this version is not yet ready for production and lacks some key features.
+
+6. Explain the concept of Leader and Follower in Kafka.
+    * Leader: Handles all read and write requests for a partition. It is the primary replica.
+    * Followers: Replicate data from the leader to ensure data redundancy. If the leader fails, one of the followers is promoted to become the new leader. This ensures high availability.
+
+7. Why is Topic Replication important in Kafka? What do you mean by ISR in Kafka?
+    * Topic replication in Kafka ensures data durability and high availability by storing multiple copies of a partition across different brokers. If a broker fails, replicas on other brokers ensure that data is not lost and remain accessible.
+    * ISR (In-Sync Replicas) are replicas that are fully synchronized with the leader. They are up-to-date with the latest data and can be promoted to leader if the current leader fails, ensuring reliability in data replication.
+
+8. What do you understand about a consumer group in Kafka?
+    * A consumer group in Kafka is a group of consumers that work together to read data from a topic.
+    * Each message in a partition is consumed by only one consumer in the group, allowing for load balancing.
+    * Multiple consumer groups can read the same data independently, enabling different applications to process data concurrently.
+
+
+
+
+
+
