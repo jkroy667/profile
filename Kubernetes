@@ -132,7 +132,25 @@
     * Init containers in Kubernetes run before the main application containers in a pod.
     * They perform setup tasks, such as initializing data or waiting for services, ensuring that the main containers start only when necessary conditions are met.
 
+30. In Kubernetes, what are the various services available?
+    * ClusterIP: Exposes the service on a cluster-internal IP, accessible only within the cluster.
+    * NodePort: Exposes the service on each node’s IP at a static port, allowing external access.
+    * LoadBalancer: Creates an external load balancer (if supported by the cloud provider) to expose the service.
+    * ExternalName: Maps a service to the DNS name of an external service, enabling service discovery.
 
+31. explain the concept of a Custom Operator in Kubernetes.
+    * Operators in Kubernetes use the Kubernetes API to automate tasks like deploying applications, scaling them up or down, and managing their overall health.
+    * They act like custom tools that add new features to Kubernetes, making it easier to handle complex applications.
+    * Operators are usually set up as custom controllers, which help keep everything running smoothly by defining how resources should be managed.
 
+32. Describe the internals of the Kubernetes control plane.
+    * The Kubernetes control plane is the brain of the Kubernetes cluster, responsible for managing its overall state. Key components include:
+        * kube-apiserver: The API server that serves as the central point for all communication and REST operations in the cluster.
+        * etcd: A distributed key-value store that stores all cluster data, configurations, and state information.
+        * kube-scheduler: Responsible for assigning pods to nodes based on resource availability and scheduling policies.
+        * kube-controller-manager: Manages controllers that handle routine tasks, such as scaling, replication, and monitoring the state of nodes and pods.
+        * cloud-controller-manager: Integrates with cloud provider APIs for managing resources and services in cloud environments.
 
+33. Explain the concept of Pod Disruption Budgets.
+    * Pod Disruption Budgets (PDBs) in Kubernetes are policies that specify the minimum number or percentage of pods that must remain available during voluntary disruptions, such as node maintenance or scaling down
 
