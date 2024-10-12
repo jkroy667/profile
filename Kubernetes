@@ -154,3 +154,15 @@
 33. Explain the concept of Pod Disruption Budgets.
     * Pod Disruption Budgets (PDBs) in Kubernetes are policies that specify the minimum number or percentage of pods that must remain available during voluntary disruptions, such as node maintenance or scaling down
 
+34. Describe the role of kube-apiserver in the Kubernetes architecture.
+    * The kube-apiserver is the central API gateway in Kubernetes. It processes RESTful API requests, validates them, and updates the cluster state in etcd.
+    * It facilitates communication between the control plane components and the worker nodes, ensuring consistent execution of operations like deployments and scaling
+
+35. How does Kubernetes handle node failures and resiliency?
+    * Whenever a node fails or a container becomes hazardous, Kubernetes makes sure that a sufficient amount of replicas is maintained by launching new replicas on numerous servers, which maintains continuous availability.
+    * Here are some key mechanisms and strategies that Kubernetes employs:
+        Node Health Monitoring
+        Pod Restart Policies
+        Replication and Desired State
+        Pod Disruption Budgets
+        Node Pools and Multi-Cloud Deployments
