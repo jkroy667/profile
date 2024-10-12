@@ -1,4 +1,39 @@
 1. Explain the concept of Container Orchestration.
-    It provides a automatic deployment, scaling, and management of containerized applications so that the developers do not have any worry about that the underlying infrastructure.
+    * It provides a automatic deployment, scaling, and management of containerized applications so that the developers do not have any worry about that the underlying infrastructure.
 
-2. 
+2. What is a Pod in Kubernetes ?
+    * A cluster of one or more Linux containers makes up a Kubernetes pod. Smallest unit of kubernetes application.
+    * kubctl get pods -n (namespace)
+
+3. How does Kubernetes handle container scaling?
+    * Kubernetes scales containers using the Horizontal Pod Autoscaler (HPA) for scaling pods, Vertical Pod Autoscaler (VPA) for adjusting resource limits, and Cluster Autoscaler for adjusting the number of nodes.
+
+4. What is Kubelet ?
+    * Kubelet is a Kubernetes agent that runs on each node, ensuring containers are running in pods as specified by the control plane. 
+      It monitors pod health, manages container lifecycle, and communicates with the API server to ensure the desired state is maintained.
+
+5. Explain the difference between a StatefulSet and a Deployment.
+    * Deploymnet: It enables you to control your application’s state and ensure that the right number of replicas are always running.
+    * Statefulset: It helpful in managing stateful applications that need persistent storage with a dependable network ID.
+
+6. What is a Service in Kubernetes?
+    * A Service in Kubernetes is an abstraction that defines a stable network endpoint to expose a set of pods, enabling communication between components or external access to the pods.
+      It ensures that traffic is evenly distributed among the pods.
+
+7. How does Kubernetes manage configuration?
+    * Kubernetes manages configuration using ConfigMaps for storing non-sensitive data like environment variables and Secrets for sensitive information like passwords.
+      These can be mounted as files or environment variables in pods, allowing for dynamic configuration without rebuilding images.
+
+8. Describe the role of a Master node in Kubernetes.
+    * The Master node in Kubernetes controls the cluster, managing the API server, scheduler, controller manager, and etcd.
+    * It handles scheduling of pods, monitors cluster state, manages workloads, and stores configuration data.
+
+9. What is the role of the kube-proxy in Kubernetes and how does it facilitate communication between Pods?
+    * The kube-proxy in Kubernetes manages network rules on each node to enable communication between pods.
+    * It routes traffic to the correct pod within a service, ensuring load balancing and maintaining network connections between pods and external clients.
+
+10. Explain the concept of Ingress in Kubernetes.
+    * Ingress in Kubernetes is an API object that manages external access to services within a cluster, typically HTTP/HTTPS.
+    * It defines routing rules, enabling services to be accessed through URLs, load balancing, SSL termination, and name-based virtual hosting.
+
+    
