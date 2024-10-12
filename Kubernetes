@@ -166,3 +166,9 @@
         Replication and Desired State
         Pod Disruption Budgets
         Node Pools and Multi-Cloud Deployments
+
+36. Difference between dockerfile and docker-compose ?
+    * Dockerfile: A text file that contains instructions for building a single Docker image. It specifies the base image,
+      environment variables, commands to run, and files to include. Dockerfiles are used to automate the creation of images for applications.
+    * Docker Compose: A tool for defining and running multi-container Docker applications. It uses a docker-compose.yml file to configure the services,
+      networks, and volumes needed for the application, allowing you to manage multiple containers as a single application.
