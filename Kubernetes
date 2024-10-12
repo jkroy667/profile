@@ -172,3 +172,6 @@
       environment variables, commands to run, and files to include. Dockerfiles are used to automate the creation of images for applications.
     * Docker Compose: A tool for defining and running multi-container Docker applications. It uses a docker-compose.yml file to configure the services,
       networks, and volumes needed for the application, allowing you to manage multiple containers as a single application.
+
+37. Differnce between CMD and RUN command in docker ?
+    * RUN is for building the image, while CMD is for defining what runs in the container when it starts.
