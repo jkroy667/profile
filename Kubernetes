@@ -82,4 +82,57 @@
       Pods and Multi-Container Support
       Monitoring and Logging
 
-20. 
+20. What is the role of the kube-scheduler in Kubernetes?
+     * The kube-scheduler in Kubernetes is responsible for assigning newly created pods to available nodes in the cluster.
+     * It evaluates resource requirements, node constraints, and scheduling policies to ensure optimal placement of pods for performance and resource utilization.
+
+21. How to setup kubernetes in AWS ?
+    * Can Set Up Kubernetes on AWS Using kubeadm or Elastic Kubernetes Service(EKS)
+    * Launch EC2 instances: Create a master node and at least one worker node.
+    * Install Docker on all nodes:
+    * Install kubeadm, kubelet, and kubectl
+    * Then Init the master Node, Install pod network, Join worker Nodes.
+
+22. Describe how a Horizontal Pod Autoscaler (HPA) works.
+    * A Horizontal Pod Autoscaler (HPA) in Kubernetes automatically adjusts the number of pod replicas based on metrics like CPU utilization.
+    * It scales pods up or down at specified intervals to maintain optimal performance and resource efficiency.
+
+23. Explain the concept of Custom Resources in Kubernetes ?
+    * Following a custom resource is installed, users can create and access its objects using kubectl, just like they do for built-in resources like Pods.
+    * A custom resource is an extension of the Kubernetes API that is not always available in a default Kubernetes installation.
+    * However, many core Kubernetes functions are now built using custom resources, making Kubernetes more modular.
+
+24. How does Kubernetes handle security and access control?
+    Kubernetes handles security and access control through:
+
+    * RBAC (Role-Based Access Control): Defines permissions for users and groups to perform actions on resources.
+    * Network Policies: Controls traffic between pods and services to enhance network security.
+    * Secrets and ConfigMaps: Manages sensitive information and configuration data securely.
+    * Pod Security Policies: Enforces security contexts for pods, defining what they can and cannot do.
+    * Authentication and Authorization: Uses various methods (e.g., certificates, tokens) to verify users and grant access based on defined policies.
+
+25. What is a Network Policy in Kubernetes?
+    * A Network Policy in Kubernetes is a set of rules that defines how groups of pods can communicate with each other and with other network endpoints.
+    * It allows users to specify which pods are allowed to receive traffic from or send traffic to other pods, enhancing security by controlling network access and isolating applications.
+
+26. What is a Helm chart, and how is it used?
+    * A Helm chart is a package that contains pre-configured Kubernetes resources and metadata to deploy applications on a Kubernetes cluster.
+    * It simplifies the deployment and management of applications by allowing users to define, install, and upgrade complex applications easily.
+    * Helm charts can be shared and reused, making it easier to manage applications consistently across different environments.
+
+27. How does Kubernetes manage storage orchestration?
+    * Kubernetes manages storage orchestration through Persistent Volumes (PVs) and Persistent Volume Claims (PVCs). PVs are storage resources in the cluster, while PVCs are requests for storage by users.
+
+28. Explain the concept of Taints and Tolerations in Kubernetes.
+    * Taints and Tolerations in Kubernetes are used to control which pods can be scheduled on specific nodes.
+        * Taints are applied to nodes to mark them as unsuitable for certain pods, effectively repelling them.
+        * Tolerations are added to pods to allow them to be scheduled on nodes with matching taints.
+
+29. Describe the use of init containers in Kubernetes.
+    * Init containers in Kubernetes run before the main application containers in a pod.
+    * They perform setup tasks, such as initializing data or waiting for services, ensuring that the main containers start only when necessary conditions are met.
+
+
+
+
+
