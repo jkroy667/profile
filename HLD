@@ -104,3 +104,59 @@ Consisting Hashing
 10. Issues with it:                      partitions are not uniform, can be very small or fairly large therefore non uniform distribution of keys.
 11. Virtual Nodes:                       Kind of solves the issue, virtually represent a server in the ring, by again hash the server. In real world system, number of virtual node is much larger.
 12. Standard deviation:                  As no. of virtual node increases standard deviation of keys distribution to servers become small.
+
+Key-Value Store (NOSQL database)
+1. Single-Server Key value store:                         store key-value in hash tables, in memory, fitting everything in memory impossible, optimisation, data compression & frequent data. No made for big data store
+2. CAP theorem:                                           impossible for a distributed system to simultaneously provide more than two of these guarantees.
+    1. Consistency:                                       consistency means all clients see the same data 
+    2. Availability:                                      availability means any client which requests data gets a response even if some of the nodes are down. 
+    3. Partition Tolerance:                               a partition indicates a communication break between two nodes. Partition tolerance means the system continues to operate despite network partitions. 
+3. Distributed key-value store:                           also known distributed hash tables,
+    1. CP (Consistency and partition tolerance) system:   if any one node unavailable, block all writes ops, all system down, Banks 
+    2. AP (Availability and partition tolerance) system:  Keep accept read & write while a node down, data synced later when Network partition resolved.
+4. Data Partition:                                        distribute data into multiple server, two challenge, distribute data evenly and minimise data movement when node add or remove, consisting hashing can be used here.
+5. Data replication:  
+    1. High availability and reliability:                 replicated data asynchronously over N servers
+    2. Issue when Virtual Nodes:                          N nodes in the ring may owned by fewer than N servers, that’s why avoid storing data in same data centres, store replica in distinct data centre.
+6. Consistency:                                           data replicated multiple nodes, need to sync, quorum can guarantee consistency for both read and write.
+    1. Quorum:
+        1. There is a coordinator that manages, there is N replicas
+        2. Write quorum of size W, write ops considered success if ack from W replicas.
+        3. Read quorum of size R, read ops considered success if ack from at least R replicas.
+        4. Configuration N,W,R typical tradeoff between latency and consistency.
+        5. R=1 and W = N, the system is optimised for a fast read. 
+        6. W=1 and R = N, the system is optimised for fast write. 
+        7. W + R > N, strong consistency is guaranteed, at least one overlapping node that maintains latest data. 
+        8. W + R <= N, strong consistency is not guaranteed. 
+    2. Strong Consistency:                                forcing a replica not to accept new reads/writes until every replica has agreed on current write, not suitable for highly available system.
+    3. Weak Consistency:                                  subsequent read operations may not see the most updated value. 
+    4. Eventual Consistency:                              this is a specific form of weak consistency. Given enough time, all updates are propagated, and all replicas are consistent.  Dynamo and Cassandra adopt eventual consistency, which is our recommended consistency model for our key-value store. 
+    5. Inconsistency Resolution:                          versioning
+        1. Replication gives high availability but causes inconsistencies among replicas. Versioning and vector locks are used to solve inconsistency problems 
+        2. Vector Locks:    A vector clock is a [server, version] pair associated with a data item 
+7. Handling Failures:
+    1. Gossip Protocol:                                   Each node has member id and heartbeat counter, periodically increment the counter, and sends this to random nodes and that updates the membership list, if heartbeat not inc within predefined period, considered offline.
+8. Handling temporary failures:                           use sloppy quorum.
+9. System Architecture:
+    1. Client comm. with key-value store through APIs, get(key), put(key, value)
+    2. A coordinator is a node acts as a proxy between client and key-value store.
+    3. Nodes are distributed on the ring using consistent hashing.
+    4. The system is decentralised so adding removing nodes become automatic.
+    5. Data is replicated multiple nodes, no single point of failure.
+10. Write path:                                           (based on the Architecture of Cassandra)
+    1. Write request is persisted on a commit log file.
+    2. Data is saved in memory cache, when cache is full or reached to a threshold, data is fused into SS Tables( sorted-string table), sorted list of key-value pairs.
+11. Read Path
+    1. Checks first data is in memory cache, return directly 
+    2. If not, check in bloom filters to figure out which SSTables and then return its value.
+12. Summary
+	1. Ability to store big data:                             use consistent hashing to spread the load across multiple servers.
+	2. High availability reads:                               Data replication, multi data-centre setup.
+	3. High available writes:                                 versioning and conflict resolution with vector clocks
+	4. Dataset partition:                                     consistent Hashing 
+	5. Incremental Scalability:                               consistent Hashing.
+	6. Heterogeneity:                                         consistent Hashing.
+	7. Tunable Consistency:                                   quorum consensus.
+	8. Handling temporary failures:                           sloppy quorum and hinted handoff
+	9. Handling permanent failures:                           Merkle tree
+	10. Handling data centre outage:                          cross data-centre replication.
