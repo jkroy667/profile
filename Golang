@@ -92,4 +92,79 @@
         rw.Lock()   // For writing
         rw.Unlock()
 
+* What is the purpose of the panic and recover functions in Go?
+    panic: It is used to stop the normal execution of a program and can be used to raise an error in exceptional cases.
+    recover: It is used to regain control of a panicking goroutine. It can be used inside a defer function to handle a panic.
+        func main() {
+        defer func() {
+            if r := recover(); r != nil {
+                fmt.Println("Recovered from panic:", r)
+            }
+        }()
+        panic("Something went wrong")
+        }
+
+* What are variadic functions in Go?
+    Variadic functions accept a variable number of arguments. The syntax uses ... before the parameter type.
+        func sum(nums ...int) int {
+        total := 0
+        for _, num := range nums {
+            total += num
+        }
+        return total
+        }
+    
+    fmt.Println(sum(1, 2, 3, 4)) // Output: 10
+
+* What does the select statement do in Go?
+    The select statement is used with channels to handle multiple channel operations. It allows a goroutine to wait on multiple communication operations
+        func main() {
+        ch1 := make(chan string)
+        ch2 := make(chan string)
+    
+        go func() { ch1 <- "hello" }()
+        go func() { ch2 <- "world" }()
+    
+        select {
+        case msg1 := <-ch1:
+            fmt.Println("Received:", msg1)
+        case msg2 := <-ch2:
+            fmt.Println("Received:", msg2)
+        }
+    }
+
+* What is the purpose of sync.WaitGroup in Go?
+    sync.WaitGroup is used to wait for a collection of goroutines to finish executing. You increment the WaitGroup counter for each goroutine and call Done() when a goroutine finishes.
+    Wait() blocks until the counter becomes zero.
+        var wg sync.WaitGroup
+        wg.Add(1)
+        go func() {
+            defer wg.Done()
+            fmt.Println("Goroutine finished")
+        }()
+        wg.Wait()
+
+* What is the difference between a buffered and unbuffered channel in Go?
+    Unbuffered Channel:
+        Has a capacity of zero.
+        Sends and receives block until both the sender and receiver are ready.
+        Used for synchronization between goroutines.
+            ch := make(chan int) // Unbuffered channel
+    Buffered Channel:
+        Has a capacity greater than zero.
+        Sends do not block until the channel is full, and receives do not block until the channel is empty.
+        Allows a limited number of values to be stored in the channel without an immediate receiver.
+            ch := make(chan int, 5) // Buffered channel with capacity 5
+
+* How do you use type assertions with interfaces in Go?
+    var i interface{} = "hello"
+    str, ok := i.(string)
+    if ok {
+        fmt.Println(str) // Output: hello
+    }
+
+
+
+
+
 
