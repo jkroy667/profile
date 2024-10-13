@@ -185,6 +185,85 @@
                 	println(tankerShip.Deliver())     // Output: Delivering liquids by Tanker Ship
                 }
 
+        * Builder Pattern 
+            The Builder Pattern is a design pattern used to create complex objects step by step, instead of all at once. This makes it easier to build objects that have many parts or options.
+            Imagine you’re building a pizza. Instead of a single constructor, you can have a PizzaBuilder where you can:
+                Set the size of the pizza.
+                Add cheese.
+                Add pepperoni.
+                Finally, create the pizza.
+            Example:
+                // Pizza struct
+                type Pizza struct {
+                	size     string
+                	hasCheese bool
+                	hasPepperoni bool
+                }
+                
+                // Pizza Builder
+                type PizzaBuilder struct {
+                	pizza Pizza
+                }
+                
+                // Methods to build the pizza
+                func (b *PizzaBuilder) SetSize(size string) *PizzaBuilder {
+                	b.pizza.size = size
+                	return b
+                }
+                
+                func (b *PizzaBuilder) AddCheese() *PizzaBuilder {
+                	b.pizza.hasCheese = true
+                	return b
+                }
+                
+                func (b *PizzaBuilder) AddPepperoni() *PizzaBuilder {
+                	b.pizza.hasPepperoni = true
+                	return b
+                }
+                
+                func (b *PizzaBuilder) Build() Pizza {
+                	return b.pizza
+                }
+                
+                func main() {
+                	builder := &PizzaBuilder{}
+                	pizza := builder.SetSize("Medium").AddCheese().AddPepperoni().Build()
+                	fmt.Printf("Created a pizza: %+v\n", pizza)
+                }
+            Benefits:
+                Separation of Concerns: Keeps the object creation process separate from the object itself.
+                Improved Readability: Makes code easier to read by clearly showing how an object is built.
+                Flexibility: Easily create different versions of an object without changing much code.
+                Easy Maintenance: Change the building process without affecting other parts of the code.
+
+        * Prototype Design Pattern 
+            The Prototype Pattern is a design pattern that allows you to create new objects by copying an existing object, known as the prototype. 
+            Instead of creating new instances from scratch, you clone a prototype instance, which can save time and resources, especially for complex objects.
+            Example:   
+                // Prototype interface
+                type Prototype interface {
+                	Clone() Prototype
+                }
+                
+                // ConcretePrototype
+                type ConcretePrototype struct {
+                	Name string
+                }
+                
+                // Clone method
+                func (p *ConcretePrototype) Clone() Prototype {
+                	return &ConcretePrototype{Name: p.Name}
+                }
+                
+                func main() {
+                	original := &ConcretePrototype{Name: "Original"}
+                	clone := original.Clone()
+                
+                	fmt.Println("Original:", original.Name) // Output: Original: Original
+                	fmt.Println("Clone:", clone.(*ConcretePrototype).Name) // Output: Clone: Original
+                }
+
+
             
 
 
