@@ -39,3 +39,57 @@
 
 
 * How does Go manage memory, and what is garbage collection?
+    Go uses a garbage collector to automatically manage memory. It identifies which objects are no longer reachable and frees their memory, preventing memory leaks.
+    This makes Go simpler to use compared to languages that require explicit memory management, though it may introduce some latency due to GC cycles.
+
+* What are the advantages of using Go over other languages like Python or Java?
+    Concurrency:
+        Go has built-in support for concurrency through goroutines, making it easier to write programs that can do many tasks at the same time. This is more efficient than Python’s threading and simpler than Java’s thread management.
+    Performance:
+        Go is a compiled language, meaning it turns code into machine code directly. This makes it faster than Python, which is interpreted, and often closer in performance to Java. It's great for building high-performance web servers and backend services.
+    Simplicity and Readability:
+        Go has a simple syntax and a small set of features, which makes it easier to learn and use. Unlike Java, it doesn’t have complex features like inheritance, which keeps code readable and easy to maintain.
+    Cross-Platform Compilation:
+        Go can compile programs into a single binary that works on different operating systems (like Windows, macOS, and Linux). This makes deployment much easier compared to languages like Python, which often needs environment-specific setups.
+    Memory Management:
+        Go has a garbage collector that automatically manages memory, making it easier than languages like C or C++ where you have to manually manage memory. This gives it a balance between performance and ease of use, closer to Java but simpler.
+    Strong Standard Library:    
+        Go comes with a rich standard library that includes packages for web servers, networking, file handling, and more. This means you can build a lot of functionality without needing many external libraries, unlike Python.
+
+* How does Go achieve concurrency internally?
+    Go's runtime uses a model called GOMAXPROCS, which specifies the maximum number of OS threads to use for executing goroutines.
+    Go schedules goroutines onto a small number of OS threads, multiplexing them as needed.
+    It uses M scheduling, where multiple goroutines (M) run on fewer OS threads (N).
+
+* How do you handle race conditions in Go?
+    Race conditions can be detected using the -race flag:
+        go run -race main.go
+    To handle race conditions, use sync.Mutex for locking shared data or sync.WaitGroup for waiting for goroutines to finish.
+    Example with sync.Mutex:
+        var mu sync.Mutex
+        mu.Lock()
+        // critical section
+        mu.Unlock()
+
+* What is a context in Go, and why is it important?
+    The context package in Go provides a way to carry deadlines, cancellation signals, and other request-scoped values across API boundaries and goroutines.
+    It’s particularly useful for managing timeouts and cancellation of goroutines:
+        ctx, cancel := context.WithTimeout(context.Background(), time.Second)
+        defer cancel()
+        select {
+        case <-ctx.Done():
+            fmt.Println("Timeout or cancellation")
+        case result := <-ch:
+            fmt.Println("Received:", result)
+        }
+
+* What is the difference between sync.Mutex and sync.RWMutex?
+    sync.Mutex provides mutual exclusion, allowing only one goroutine to access a critical section at a time.
+    sync.RWMutex allows multiple readers but only one writer. It’s useful when most operations are read-heavy, as it allows multiple goroutines to read simultaneously
+        var rw sync.RWMutex
+        rw.RLock()  // For reading
+        rw.RUnlock()
+        rw.Lock()   // For writing
+        rw.Unlock()
+
+
