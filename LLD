@@ -463,6 +463,130 @@
             	dir.ShowContents()
             }
 
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+* Behavioral Patterns
+    * Strategy:
+        The Strategy Pattern is a behavioral design pattern that enables selecting an algorithm's behavior at runtime.
+        It allows you to define a family of algorithms, encapsulate each one, and make them interchangeable without altering the code that uses them.
+        Example:
+            // Strategy interface
+            type PaymentStrategy interface {
+            	Pay(amount float64)
+            }
+            
+            // Concrete strategies
+            type CreditCard struct {
+            	cardNumber string
+            }
+            
+            func (c *CreditCard) Pay(amount float64) {
+            	fmt.Printf("Paid %.2f using Credit Card %s\n", amount, c.cardNumber)
+            }
+            
+            type PayPal struct {
+            	email string
+            }
+            
+            func (p *PayPal) Pay(amount float64) {
+            	fmt.Printf("Paid %.2f using PayPal account %s\n", amount, p.email)
+            }
+            
+            // Context
+            type ShoppingCart struct {
+            	strategy PaymentStrategy
+            }
+            
+            func (sc *ShoppingCart) SetPaymentStrategy(strategy PaymentStrategy) {
+            	sc.strategy = strategy
+            }
+            
+            func (sc *ShoppingCart) Checkout(amount float64) {
+            	sc.strategy.Pay(amount)
+            }
+            
+            func main() {
+            	cart := &ShoppingCart{}
+            
+            	// Using Credit Card
+            	cart.SetPaymentStrategy(&CreditCard{cardNumber: "1234-5678-9876-5432"})
+            	cart.Checkout(100.00)
+            
+            	// Switching to PayPal
+            	cart.SetPaymentStrategy(&PayPal{email: "user@example.com"})
+            	cart.Checkout(50.00)
+            }
+
+    * Observer Pattern:
+        The Observer Pattern is a design pattern used to establish a one-to-many relationship between objects.
+        In this pattern, one object (the subject) maintains a list of its dependent objects (the observers) and automatically notifies them of any state changes.
+        Example: 
+            // Observer interface
+            type Observer interface {
+            	Update(data string)
+            }
+            
+            // Subject interface
+            type Subject interface {
+            	Register(observer Observer)
+            	Unregister(observer Observer)
+            	Notify()
+            	SetData(data string)
+            }
+            
+            // Concrete subject
+            type NewsPublisher struct {
+            	observers []Observer
+            	data      string
+            }
+            
+            func (n *NewsPublisher) Register(observer Observer) {
+            	n.observers = append(n.observers, observer)
+            }
+            
+            func (n *NewsPublisher) Unregister(observer Observer) {
+            	for i, obs := range n.observers {
+            		if obs == observer {
+            			n.observers = append(n.observers[:i], n.observers[i+1:]...)
+            			break
+            		}
+            	}
+            }
+            
+            func (n *NewsPublisher) Notify() {
+            	for _, observer := range n.observers {
+            		observer.Update(n.data)
+            	}
+            }
+            
+            // Implementing SetData in the concrete subject
+            func (n *NewsPublisher) SetData(data string) {
+            	n.data = data
+            	n.Notify() // Notify observers when data changes
+            }
+            
+            // Concrete observer
+            type NewsChannel struct {
+            	name string
+            }
+            
+            func (n *NewsChannel) Update(data string) {
+            	fmt.Printf("%s received news: %s\n", n.name, data)
+            }
+            
+            func main() {
+            	publisher := &NewsPublisher{}
+            	channel1 := &NewsChannel{name: "Channel 1"}
+            	channel2 := &NewsChannel{name: "Channel 2"}
+            
+            	publisher.Register(channel1)
+            	publisher.Register(channel2)
+            
+            	publisher.SetData("Breaking News!") // This will notify all observers
+            }
+
+
+
 
 
 
