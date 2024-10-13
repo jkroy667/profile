@@ -1,4 +1,4 @@
-1. Define SOLID principles.
+*  Define SOLID principles.
     The SOLID principles are a set of design principles for writing clean, maintainable, and scalable code in object-oriented programming:
       * S - Single Responsibility Principle (SRP): A class should have only one reason to change, meaning it should only have one responsibility.
       * O - Open/Closed Principle (OCP): Software entities like classes, modules, and functions should be open for extension but closed for modification.
@@ -8,15 +8,188 @@
       * D - Dependency Inversion Principle (DIP): High-level modules should not depend on low-level modules; both should depend on abstractions. Abstractions should not depend on details; details should depend on abstractions.
             if you have a class that needs to send messages (like a notification), it shouldn't depend directly on a specific messaging service (like email or SMS). Instead, it should depend on an interface (like "MessageService")
 
-2. Explain DRY (Don't repeat yourself) principle.
+*  Explain DRY (Don't repeat yourself) principle.
     This principle means avoiding repetition in your code. If you find yourself writing the same code or logic in multiple places, you should try to move it into a single place (like a function or class) that can be reused.
 
-3. Explain YAGNI (You aren't gonna need it) principle.
+*  Explain YAGNI (You aren't gonna need it) principle.
     This principle means don't add functionality until it’s actually necessary. Only build what you need right now, not what you think you might need in the future.
     Let's say you're building a user registration feature, and you think, "Maybe in the future, users will want to add their profile pictures during registration." So, you start adding extra code to handle profile pictures, even though it's not required now.
 
-4. Explain KISS (Keep it simple and stypid) principle.
+* Explain KISS (Keep it simple and stypid) principle.
     The KISS (Keep It Simple, Stupid) principle emphasizes that simplicity is key. It means you should aim to write code that is as simple and straightforward as possible, avoiding unnecessary complexity. This makes the code easier to understand, maintain, and debug.
+
+* Creational Pattern 
+    * Singleton Pattern:
+        The Singleton pattern ensures that a class or object has only one instance throughout the application and provides a global access point to it.
+        This is useful when you want to control access to a shared resource, like a database connection.
+        example:
+            type Singleton struct {
+                // fields if needed
+            }
+            
+            var instance *Singleton
+            var once sync.Once
+            
+            // GetInstance returns the singleton instance.
+            func GetInstance() *Singleton {
+                once.Do(func() {
+                    instance = &Singleton{}
+                })
+                return instance
+            }
+        once.Do ensures that the instance is created only once, even in concurrent scenarios.
+        GetInstance() returns the same instance every time it is called.
+
+    * Factory Method:
+        Imagine you’re building a logistics app that starts with trucks for transport. Over time, sea transport companies want to join in.
+        But the code is tightly tied to trucks, so adding ships means rewriting a lot of the app.
+        If you add new transport types later, you’ll face the same problem, ending up with messy code full of conditionals.
+        Solution: 
+            The Factory Method pattern helps by replacing direct object creation with a factory method.
+            Instead of creating truck or ship objects directly, you call a factory method that handles the creation.
+            This way, if you need to add new transport types, you only need to change the factory method, not the whole app.
+            The key is that all transport types (like Truck or Ship) must share a common interface or base class.
+            The factory method in the base class will return this type, allowing subclasses to decide which transport object to create.
+
+            Example: 
+            
+                // Transport is the common interface for all transport types.
+                type Transport interface {
+                	Deliver() string
+                }
+                
+                // Truck is a type of transport.
+                type Truck struct{}
+                
+                func (t *Truck) Deliver() string {
+                	return "Delivering by land in a truck"
+                }
+                
+                // Ship is another type of transport.
+                type Ship struct{}
+                
+                func (s *Ship) Deliver() string {
+                	return "Delivering by sea in a ship"
+                }
+                
+                // Logistics is the base factory interface.
+                type Logistics interface {
+                	CreateTransport() Transport
+                }
+                
+                // RoadLogistics creates trucks.
+                type RoadLogistics struct{}
+                
+                func (r *RoadLogistics) CreateTransport() Transport {
+                	return &Truck{}
+                }
+                
+                // SeaLogistics creates ships.
+                type SeaLogistics struct{}
+                
+                func (s *SeaLogistics) CreateTransport() Transport {
+                	return &Ship{}
+                }
+                
+                func main() {
+                	var logistics Logistics
+                
+                	// Using road logistics to create a truck.
+                	logistics = &RoadLogistics{}
+                	transport := logistics.CreateTransport()
+                	fmt.Println(transport.Deliver()) // Output: Delivering by land in a truck
+                
+                	// Using sea logistics to create a ship.
+                	logistics = &SeaLogistics{}
+                	transport = logistics.CreateTransport()
+                	fmt.Println(transport.Deliver()) // Output: Delivering by sea in a ship
+                }
+
+        * Abstract Factory Pattern 
+            The Abstract Factory Pattern is a creational design pattern that provides an interface for creating families of related or dependent objects without specifying their concrete classes
+            Families of Products: It creates a set of related objects. For example, in a GUI application, an abstract factory might create buttons, checkboxes, and text fields for different operating systems (like Windows or macOS).
+            Abstract Factory pattern as a higher-level abstraction that builds on top of the Factory Method pattern.
+            Example:
+                // Product Interfaces
+                type Truck interface {
+                	Deliver() string
+                }
+                
+                type Ship interface {
+                	Deliver() string
+                }
+                
+                // Abstract Factory Interface
+                type LogisticsFactory interface {
+                	CreateTruck() Truck
+                	CreateShip() Ship
+                }
+                
+                // Concrete Product Implementations for Trucks
+                type StandardTruck struct{}
+                func (s *StandardTruck) Deliver() string {
+                	return "Delivering cargo by Standard Truck"
+                }
+                
+                type ExpressTruck struct{}
+                func (e *ExpressTruck) Deliver() string {
+                	return "Delivering cargo by Express Truck"
+                }
+                
+                // Concrete Product Implementations for Ships
+                type CargoShip struct{}
+                func (c *CargoShip) Deliver() string {
+                	return "Delivering goods by Cargo Ship"
+                }
+                
+                type TankerShip struct{}
+                func (t *TankerShip) Deliver() string {
+                	return "Delivering liquids by Tanker Ship"
+                }
+                
+                // Concrete Factory Implementations
+                type StandardLogisticsFactory struct{}
+                func (s *StandardLogisticsFactory) CreateTruck() Truck {
+                	return &StandardTruck{}
+                }
+                func (s *StandardLogisticsFactory) CreateShip() Ship {
+                	return &CargoShip{}
+                }
+                
+                type ExpressLogisticsFactory struct{}
+                func (e *ExpressLogisticsFactory) CreateTruck() Truck {
+                	return &ExpressTruck{}
+                }
+                func (e *ExpressLogisticsFactory) CreateShip() Ship {
+                	return &TankerShip{}
+                }
+                
+                // Client Code
+                func main() {
+                	var factory LogisticsFactory
+                
+                	// Using Standard Logistics
+                	factory = &StandardLogisticsFactory{}
+                	standardTruck := factory.CreateTruck()
+                	cargoShip := factory.CreateShip()
+                
+                	println(standardTruck.Deliver()) // Output: Delivering cargo by Standard Truck
+                	println(cargoShip.Deliver())      // Output: Delivering goods by Cargo Ship
+                
+                	// Using Express Logistics
+                	factory = &ExpressLogisticsFactory{}
+                	expressTruck := factory.CreateTruck()
+                	tankerShip := factory.CreateShip()
+                
+                	println(expressTruck.Deliver()) // Output: Delivering cargo by Express Truck
+                	println(tankerShip.Deliver())     // Output: Delivering liquids by Tanker Ship
+                }
+
+            
+
+
+
+        
 
 
 
