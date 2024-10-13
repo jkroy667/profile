@@ -1,0 +1,24 @@
+1. Define SOLID principles.
+    The SOLID principles are a set of design principles for writing clean, maintainable, and scalable code in object-oriented programming:
+      * S - Single Responsibility Principle (SRP): A class should have only one reason to change, meaning it should only have one responsibility.
+      * O - Open/Closed Principle (OCP): Software entities like classes, modules, and functions should be open for extension but closed for modification.
+      * L - Liskov Substitution Principle (LSP): Subtypes should be substitutable for their base types without altering the correctness of the program.
+            If you have a base class (like "Animal") and a subclass (like "Dog"), you should be able to use a "Dog" wherever you use an "Animal" and it should work fine.
+      * I - Interface Segregation Principle (ISP): Clients should not be forced to depend on interfaces they do not use. It’s better to have smaller, specific interfaces rather than one large, general-purpose interface.
+      * D - Dependency Inversion Principle (DIP): High-level modules should not depend on low-level modules; both should depend on abstractions. Abstractions should not depend on details; details should depend on abstractions.
+            if you have a class that needs to send messages (like a notification), it shouldn't depend directly on a specific messaging service (like email or SMS). Instead, it should depend on an interface (like "MessageService")
+
+2. Explain DRY (Don't repeat yourself) principle.
+    This principle means avoiding repetition in your code. If you find yourself writing the same code or logic in multiple places, you should try to move it into a single place (like a function or class) that can be reused.
+
+3. Explain YAGNI (You aren't gonna need it) principle.
+    This principle means don't add functionality until it’s actually necessary. Only build what you need right now, not what you think you might need in the future.
+    Let's say you're building a user registration feature, and you think, "Maybe in the future, users will want to add their profile pictures during registration." So, you start adding extra code to handle profile pictures, even though it's not required now.
+
+4. Explain KISS (Keep it simple and stypid) principle.
+    The KISS (Keep It Simple, Stupid) principle emphasizes that simplicity is key. It means you should aim to write code that is as simple and straightforward as possible, avoiding unnecessary complexity. This makes the code easier to understand, maintain, and debug.
+
+
+
+
+
