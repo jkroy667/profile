@@ -1,1 +1,41 @@
+* What is a Go routine? How does it differ from a thread?
+    A goroutine is a lightweight thread managed by the Go runtime. It is cheaper in terms of resources compared to an OS-level thread.
+    While threads are scheduled by the OS, goroutines are scheduled by the Go runtime, allowing Go to manage many goroutines efficiently using a small number of threads.
 
+* What is a slice in Go, and how is it different from an array?
+    In Go, a slice is a dynamic, resizable sequence of elements, whereas an array has a fixed size.
+    Array: Has a fixed length and cannot grow or shrink. You must specify its size when you declare it.
+      var arr [3]int = [3]int{1, 2, 3} // Fixed size: 3 elements
+    Slice: Is built on top of arrays and can grow or shrink as needed. It has a length (number of elements) and a capacity (total underlying array size).
+      slice := []int{1, 2, 3} // Dynamic size: can add more elements
+
+* How does Go handle error handling?
+    Go uses a simple pattern for error handling, where functions return an error as a second return value. If err is nil, no error occurred; otherwise, you handle the error:
+
+* What is a struct in Go?
+    A struct is a composite data type that groups together variables under a single name. These variables are known as fields.
+
+* What is the difference between make and new in Go?
+    In Go, make and new are used for creating and allocating memory, but they serve different purposes:
+    make: Used to create and initialize slices, maps, and channels. It allocates memory and also initializes the object so it’s ready to use.
+      slice := make([]int, 5) // Creates a slice with length 5
+    new: Used to allocate memory for a zeroed value of a specific type (like an integer, struct, etc.). It returns a pointer to the newly allocated memory.  
+      num := new(int) // Creates a pointer to an int with value 0
+
+* What is a defer statement in Go?
+    A defer statement defers the execution of a function until the surrounding function returns. It’s often used for resource cleanup, like closing a file.
+
+* How do you implement an interface in Go?
+    An interface in Go is a type that specifies a set of method signatures. A type implements an interface by implementing all of its methods. There is no explicit keyword for implementing interfaces:
+
+* What are channels in Go, and how do you use them?
+    Channels are used for communication between goroutines. They provide a way for goroutines to synchronize by sending and receiving values:
+        ch := make(chan int)
+        go func() {
+            ch <- 5 // Send value 5 to channel
+        }()
+        value := <-ch // Receive value from channel
+        fmt.Println(value) // Output: 5
+
+
+* How does Go manage memory, and what is garbage collection?
