@@ -295,5 +295,10 @@
     When a program needs to perform a task that requires the OS, like reading a file or sending data, it uses a system call to ask the OS for help.
     Think of it like a program "making a request" to the OS to do something specific.
 
+* What is a kernel ?
+    Kernel is the first program that is loaded in memory when OS is loading as well as it remains in memory till OS is running.
+    Kernel is the core part of the OS which is responsible for managing resources, allowing multiple processes to use the resources and provide services to various processes.
+    Kernel modules can be loaded and unloaded in run-time i.e. in running OS.
+
 
 
