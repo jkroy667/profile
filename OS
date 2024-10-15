@@ -300,5 +300,9 @@
     Kernel is the core part of the OS which is responsible for managing resources, allowing multiple processes to use the resources and provide services to various processes.
     Kernel modules can be loaded and unloaded in run-time i.e. in running OS.
 
+*  If a process fails, most operating system write the error information to a ?
+    If a process fails, most operating systems write the error information to a log file. Log file is examined by the debugger, to find out what is the actual cause of that particular problem.
+    Log file is useful for system programmers for correcting errors.
+
 
 
