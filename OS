@@ -290,3 +290,10 @@
         Increases computational power, throughput, and reliability by running processes in parallel.
         High-performance servers, parallel computing systems, and multi-core processors in modern computers.
 
+* What are system calls ?
+    System calls are like a bridge between a program and the operating system.
+    When a program needs to perform a task that requires the OS, like reading a file or sending data, it uses a system call to ask the OS for help.
+    Think of it like a program "making a request" to the OS to do something specific.
+
+
+
