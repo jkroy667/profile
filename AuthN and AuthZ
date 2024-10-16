@@ -70,6 +70,24 @@
      * API Gateway: Implement an API Gateway to centralize authentication and authorization checks before requests reach backend services.
      * Service Mesh: Use a service mesh (e.g., Istio) to handle mTLS, enforce authorization policies, and manage secure communication between microservices.
 
+* Is keycloak provides a statefull or stateless authentication ?
+     * Keycloak is not purely stateless because it stores user sessions, tracking when a user logs in and out.
+       This allows features like single sign-on (SSO) and centralized logout, where logging out from one service ends sessions across others.
+     * However, it uses a hybrid approach. Keycloak issues JWTs (access tokens) that contain user data and can be validated by services without needing to check Keycloak for each request,
+       providing some stateless benefits while maintaining session control on the server.
+
+* If I logout the session how to ensure that services don't validate the token ?
+     * Use token introspection to verify if the token is still valid. This means that services can contact Keycloak’s introspection endpoint to check the status of a token before accepting it.
+       If the token has been invalidated due to logout, Keycloak will return a response indicating that the token is no longer active.
+
+* Explain single sign-on.
+     * Single Sign-On (SSO) means that a user authenticates once with an identity provider like Keycloak, and this authentication is recognized across multiple services or applications,
+       without the user needing to log in again for each one.
+     * SSO involves creating a session with the identity provider (like Keycloak) and issuing JWT tokens to services.
+       The session keeps track of the user's login status, while the tokens provide a way for services to verify that the user is authenticated.
+
+
+
 
 
 
