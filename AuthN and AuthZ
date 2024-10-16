@@ -38,4 +38,38 @@
       * Security Consideration: Refresh tokens should be stored securely, as they can be used to generate new access tokens.
 
 * How does role-based access control (RBAC) differ from attribute-based access control (ABAC)?
-      * 
+      * RBAC: Access rights are assigned based on roles, and users are assigned to roles. Roles define what actions can be performed on resources.
+      * Example: A user with the admin role may have full access, while a user with the viewer role has read-only access.
+      * ABAC: Access is determined based on attributes of the user, resource, and environment. Policies define how attributes (such as user department, time of access, or resource sensitivity) affect access control.
+      * Example: A policy might state that users in the finance department can access financial_reports between 9 AM and 5 PM.
+
+* What are the best practices for securely storing user passwords in a database?
+      * Hashing: Passwords should never be stored in plain text. Use a cryptographic hashing function like bcrypt, scrypt, or Argon2.
+      * Salting: Add a unique salt (random data) to each password before hashing to prevent attackers from using precomputed hash tables (rainbow tables).
+      * Peppering: Use a secret value known as a pepper to add an extra layer of security before hashing.
+
+
+* What is the difference between stateless and stateful authentication?
+      * Stateless Authentication: The server does not store any user session data. Instead, the client includes all necessary information (e.g., in a JWT) with each request. 
+        The server verifies the token's signature to validate the user.
+             * Pros: Scalable, since no session storage is required on the server side.
+             * Cons: Token revocation is difficult because tokens are valid until they expire
+      * Stateful Authentication: The server maintains user session data, usually stored in a session store or database. The client holds a session ID that the server uses to look up session data.
+             * Pros: Easier to revoke sessions or invalidate sessions.
+             * Cons: Less scalable due to the need for session storage.
+
+* Explain OAuth 2.0 scopes and how they are used.
+     * Scopes define the permissions or access levels that a client is requesting from the resource server. They limit the access granted by an access token.
+     * Example: A client might request the scope read:user to read user data or write:posts to create new post
+     * Role of Scopes: Scopes help to ensure that the client only has the minimal required access to a user’s data, following the principle of least privilege.
+     * Example in Use: During the authorization process, users can be prompted to grant or deny specific scopes requested by the client.
+
+* How do you ensure secure API authentication and authorization between microservices?
+     * Mutual TLS (mTLS): Use mutual TLS to ensure that both client and server verify each other's identity.
+     * JWT: Use signed JWTs to represent the identity of the calling service, along with necessary scopes or claims.
+     * API Gateway: Implement an API Gateway to centralize authentication and authorization checks before requests reach backend services.
+     * Service Mesh: Use a service mesh (e.g., Istio) to handle mTLS, enforce authorization policies, and manage secure communication between microservices.
+
+
+
+
