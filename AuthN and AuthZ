@@ -1,0 +1,41 @@
+*  What is the difference between OAuth 2.0 and OpenID Connect?
+      * OAuth 2.0 is a protocol for authorization, allowing applications to obtain limited access to user accounts on an HTTP service. 
+        It provides authorization flows for web, desktop, and mobile applications.
+      * OpenID Connect (OIDC) is an identity layer built on top of OAuth 2.0, adding user authentication to OAuth's authorization.
+        It allows clients to verify the identity of an end-user based on the authentication performed by an authorization server, as well as to obtain basic profile information about the user.
+      Key Difference: OAuth 2.0 is mainly concerned with authorization (who can access what resources), while OIDC adds authentication (verifying the user's identity).
+
+* How does the OAuth 2.0 Authorization Code Flow work?
+      * The client application redirects the user to the authorization server with a request for authorization.
+      * The user authenticates and consents to the requested permissions.
+      * The authorization server redirects the user back to the client with an authorization code.
+      * The client exchanges the authorization code for an access token (and optionally a refresh token) by making a secure request to the authorization server.
+      * The access token is then used to access protected resources on behalf of the user.
+
+* Explain JWT. Why is it commonly used in modern web authentication?
+      * JWT (JSON Web Token) is a compact, URL-safe token format used to securely transmit information between parties as a JSON object.
+        It is digitally signed using a secret or a public/private key pair.
+      * Structure: A JWT is made up of three parts: Header, Payload, and Signature, separated by dots (.).
+      * Why Use JWT?:
+        * Stateless Authentication: JWT is self-contained, meaning it can store user information and does not require server-side session storage.
+        * This is similar to having a stamped ticket that allows you entry to a concert—you don’t need to be on a list at the gate, you just show the ticket (JWT), and if it's valid, you get in.
+        * Scalable: Ideal for microservices architectures where user sessions can be validated without requiring centralized storage.
+        * Security: The signature ensures that the token cannot be tampered with. Using algorithms like RSA allows for more secure signature verification.
+
+* What are the potential security vulnerabilities of OAuth 2.0, and how can they be mitigated?
+      * Authorization Code Interception: If the authorization code is intercepted before being exchanged for a token, it can be used by an attacker.
+          Mitigation: Use PKCE (Proof Key for Code Exchange), especially for public clients like mobile apps. PKCE adds an additional layer of security by requiring a code challenge and verifier.
+      * Token Leakage: Access tokens may be leaked through URLs if not handled properly
+          Mitigation: Use authorization code flow with server-side token exchange instead of the implicit flow, as tokens are not exposed in URLs.
+      * Redirect URI Manipulation: An attacker may manipulate the redirect URI to send the authorization code to an unintended location.
+          Mitigation: Use whitelisted redirect URIs and ensure that the redirect URIs are validated strictly.
+
+* What is a refresh token, and how does it improve security?
+      * A refresh token is a credential used to obtain a new access token without requiring the user to re-authenticate. It is typically issued along with an access token during the authorization process.
+      * Why Use It?
+          * Improves Security: The access token is short-lived, reducing the window of time in which a stolen token could be used.
+          * User Experience: Users don’t need to log in again when the access token expires, as the application can use the refresh token to request a new one.
+      * Security Consideration: Refresh tokens should be stored securely, as they can be used to generate new access tokens.
+
+* How does role-based access control (RBAC) differ from attribute-based access control (ABAC)?
+      * 
