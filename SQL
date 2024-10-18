@@ -15,4 +15,26 @@
 
 * Show first and last name, allergies from patients which have allergies to either 'Penicillin' or 'Morphine'. Show results ordered ascending by allergies then by first_name then by last_name.
     select first_name,last_name,allergies from patients where allergies in ('Penicillin','Morphine') order by allergies,first_name,last_name;
+
+* Show patient_id, diagnosis from admissions. Find patients admitted multiple times for the same diagnosis.
+    SELECT DISTINCT a1.patient_id, a1.diagnosis FROM admissions a1
+    WHERE 1 < (
+        SELECT COUNT(*)
+        FROM admissions a2
+        WHERE a1.patient_id = a2.patient_id
+          AND a1.diagnosis = a2.diagnosis
+    );
+
+* Show the city and the total number of patients in the city. Order from most to least patients and then by city name ascending.
+    select city,count(patient_id) as total_patients from patients group by city order by total_patients desc, city asc;
+
+* Show first name, last name and role of every person that is either patient or doctor. The roles are either "Patient" or "Doctor"
+    select first_name,last_name, "patient" As roles from patients 
+    union All 
+    select first_name,last_name, "Doctor" as roles from doctors
+
+* 
+
+
+
     
