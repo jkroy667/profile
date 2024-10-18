@@ -1,0 +1,18 @@
+* Show unique birth years from patients and order them by ascending.
+    select distinct Year(birth_date) from patients order by Year(birth_date) asc;
+
+* Show unique first names from the patients table which only occurs once in the list.
+    select first_name from patients group by first_name having count(first_name) = 1;
+
+* Show patient_id and first_name from patients where their first_name start and ends with 's' and is at least 6 characters long.
+    select patient_id,first_name from patients where first_name like 's%____%s';
+
+* Show patient_id, first_name, last_name from patients whos diagnosis is 'Dementia'.
+    select p.patient_id,p.first_name,p.last_name from patients p Left join admissions a where p.patient_id = a.patient_id and a.diagnosis='Dementia';
+
+* Display every patient's first_name. Order the list by the length of each name and then by alphabetically.
+    select first_name from patients order by length(first_name),first_name;
+
+* Show first and last name, allergies from patients which have allergies to either 'Penicillin' or 'Morphine'. Show results ordered ascending by allergies then by first_name then by last_name.
+    select first_name,last_name,allergies from patients where allergies in ('Penicillin','Morphine') order by allergies,first_name,last_name;
+    
