@@ -107,7 +107,7 @@ Topics for DBMS
         * second normal form (2nf):
             meets all requirements of 1nf. Ensuring non-key attributes are fully dependent on primary key.e.g, divide id,name,couse,instructor ---> id,name and id,course,instructor
         * third normal form (3nf):
-            meets all requirements of 2nf. Ensuring non-key attributes ate only dependent on primary key.not on any other non-key attributes. e.g, divide id,course,instructor ---> id,course and course,instructor.
+            meets all requirements of 2nf. Ensuring non-key attributes ate only dependent on primary key.not on any other non-key attributes.It addresses transitive dependencies e.g, divide id,course,instructor ---> id,course and course,instructor.
         * Boyce-Codd Normal Form (BCNF):
             advance version of 3nf
     disadvantage of normalisation is that it increases complexity,performance overhead(joins),higher latency,maintanance overhead.
