@@ -28,6 +28,10 @@
 * How do you implement an interface in Go?
     An interface in Go is a type that specifies a set of method signatures. A type implements an interface by implementing all of its methods. There is no explicit keyword for implementing interfaces:
 
+* Concurrency vs. Parallelism:
+    Goroutine: Goroutines are designed for concurrency. They run concurrently, meaning they are executed in an interleaved manner on a single OS thread. This concurrency allows efficient multitasking on a single CPU core.
+    Traditional Thread: Threads are typically used for parallelism. They are executed in parallel on multiple CPU cores, allowing true parallel execution of tasks. Threads often have higher overhead in terms of creation and management.
+
 * What are channels in Go, and how do you use them?
     Channels are used for communication between goroutines. They provide a way for goroutines to synchronize by sending and receiving values:
         ch := make(chan int)
