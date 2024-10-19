@@ -74,7 +74,7 @@
             Combine multiple RAID 5 or RAID 6 arrays with RAID 0.
 
 * What is a deadlock? Different conditions to achieve a deadlock. 
-    It is a situation in multi-process system where two or more process not able to procced because each is holding a resource that the other one holds.
+    It is a situation in multi-process system where two or more process not able to procced because one is waiting for a resource that the other one holds.
     Conditions of deadlock:
         A deadlock occurs when the following four conditions are met simultaneously:
         * Mutual exclusion:
