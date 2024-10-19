@@ -212,7 +212,7 @@ Topics for DBMS
 * Difference Between 2-Tier and 3-Tier Architecture
      * 2-Tier Architecture
         The application is divided into two layers, client and the server.
-        Client directly interacts with the user and performs presentation logic.(eg. GUI), server manages database and business logic.
+        Client directly interacts with the server and performs presentation logic.(eg. GUI), server manages database and business logic.
         Pros:
             simple to implement
         Cons:
