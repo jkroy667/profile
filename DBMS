@@ -78,16 +78,22 @@ Topics for DBMS
         the highest level of abstraction, provides only part of the database to the user and application.
     
 * Indexing in database 
-    As u know database stores the data in disk and data structure stores the data in RAM. So in disk data is stored in tracks and sectors. so intersection of both makes a block in disk.
-    so lets say each block can store 512Bits of data and the block offset becomes 0 to 511. 
-    Now comes the question how to get this data much faster. lets say we have a table of 100 records and each record take 128bits of data.
-    no. of records in 1 bloak  = 4, total no. of blocks required = 25.
-    so to get a record we need to search 25 blocks in a disk. we can reduce this time by introducing index table of id and a pointer to that block. now size of index row =  16bits.
-    no. of blocks required ~ 4 as 512/16 = 32 rows in 1 block and 100/32 ~ 4.
-    now searching becomes 4 + 1 = 5 block reduced from 25 to 5 blocks.
-    we can also create sparse of indexing (multi level indexing) by introducing index table of index table when the data becomes huge. let say we have 1000 records than blocks = 250, index block becomes = 40.
-    this searching is also expensive therefore introduce another index table of index table which stores pointer to the block not record.
-    therefore now the index table key value will be 1,33,.... with value as the pointer of the block. so blocks required for this  ~ 2. so search = 2 + 1 + 1 becomes 4 block only.
+    Indexing in DBMS is a technique used to improve the speed of data retrieval operations on a database table by creating a data structure (index) that provides quick access to rows in the table.
+    It works like a book index, allowing the database to find the desired data without scanning the entire table. Indexes can be created on columns to speed up queries involving those columns, especially in large databases.
+        As u know database stores the data in disk and data structure stores the data in RAM. So in disk data is stored in tracks and sectors. so intersection of both makes a block in disk.
+        so lets say each block can store 512Bits of data and the block offset becomes 0 to 511. 
+        Now comes the question how to get this data much faster. lets say we have a table of 100 records and each record take 128bits of data.
+        no. of records in 1 bloak  = 4, total no. of blocks required = 25.
+        so to get a record we need to search 25 blocks in a disk. we can reduce this time by introducing index table of id and a pointer to that block. now size of index row =  16bits.
+        no. of blocks required ~ 4 as 512/16 = 32 rows in 1 block and 100/32 ~ 4.
+        now searching becomes 4 + 1 = 5 block reduced from 25 to 5 blocks.
+        we can also create sparse of indexing (multi level indexing) by introducing index table of index table when the data becomes huge. let say we have 1000 records than blocks = 250, index block becomes = 40.
+        this searching is also expensive therefore introduce another index table of index table which stores pointer to the block not record.
+        therefore now the index table key value will be 1,33,.... with value as the pointer of the block. so blocks required for this  ~ 2. so search = 2 + 1 + 1 becomes 4 block only.
+
+* Indexing vs Sharding 
+    If your goal is to speed up query performance in a manageable-sized database, indexing is the better choice.
+    If you need to handle massive data sets and scale out across multiple servers, sharding is more suitable.
 
 * B trees and B+ trees
     It uses m-way search tree wit some rules and uses multi level indexing. watch abdul bari video.
