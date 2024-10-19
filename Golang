@@ -36,6 +36,10 @@
     Goroutine: Goroutines are lightweight compared to threads. They have a small initial stack size (usually 2KB or 4KB) and consume less memory. As a result, Go programs can spawn thousands of goroutines with relatively low overhead.
     Traditional Thread: Threads are heavier in terms of memory usage and resource consumption. Creating a large number of threads can lead to increased memory overhead and management complexity.
 
+* What happens when the main function in a Go program exits?
+    When the main function in a Go program exits, the entire program terminates immediately, even if there are still active goroutines running.
+    Any background goroutines that have not finished their execution will be stopped without completing their tasks.
+    This is why it's important to use mechanisms like sync.WaitGroup or context to ensure that all necessary work is completed before allowing the main function to exit.
 
 * What are channels in Go, and how do you use them?
     Channels are used for communication between goroutines. They provide a way for goroutines to synchronize by sending and receiving values:
