@@ -210,6 +210,38 @@
             }
         }
 
+        Semaphore pattern
+
+        package main
+        
+        import (
+            "fmt"
+            "sync"
+        )
+        
+        func worker(id int, sem chan struct{}, wg *sync.WaitGroup) {
+            defer wg.Done()
+            sem <- struct{}{} // Acquire a semaphore slot.
+            defer func() {
+                <-sem // Release the semaphore slot.
+            }()
+            fmt.Printf("Worker %d is working\n", id)
+            // Perform your work here.
+        }
+        
+        func main() {
+            numWorkers := 3
+            sem := make(chan struct{}, numWorkers)
+            var wg sync.WaitGroup
+        
+            for i := 1; i <= numWorkers; i++ {
+                wg.Add(1)
+                go worker(i, sem, &wg)
+            }
+        
+            wg.Wait()
+        }
+
 * Why would you use sync.Once in Go?
     sync.Once ensures that a piece of code is executed only once, even if it is called from multiple goroutines.
     It is commonly used for lazy initialization or singleton patterns.
