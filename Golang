@@ -163,6 +163,58 @@
         fmt.Println(str) // Output: hello
     }
 
+* How do you prevent a goroutine leak in Go ?
+    A goroutine leak occurs when a goroutine is no longer needed but is still running, often waiting on a channel that will never receive a value.
+    To prevent goroutine leaks:
+    Use select with default case: To avoid blocking forever on a channel.
+    Use context.Context: Pass a context.Context to the goroutine and use context.WithCancel or context.WithTimeout to signal the goroutine to stop.
+    Properly close channels: Ensure that channels are closed to signal that no more values will be sent, allowing any receiving goroutines to exit.
+
+* What is a worker pool, and how would you implement it in Go?
+    A worker pool is a pattern where multiple worker goroutines are spawned to process tasks concurrently, distributing the workload efficiently.
+        func worker(id int, jobs <-chan int, results chan<- int) {
+            for job := range jobs {
+                fmt.Printf("Worker %d processing job %d\n", id, job)
+                results <- job * 2
+            }
+        }
+        
+        func main() {
+            jobs := make(chan int, 100)
+            results := make(chan int, 100)
+        
+            for w := 1; w <= 3; w++ {
+                go worker(w, jobs, results)
+            }
+        
+            for j := 1; j <= 5; j++ {
+                jobs <- j
+            }
+            close(jobs)
+        
+            for a := 1; a <= 5; a++ {
+                fmt.Println(<-results)
+            }
+        }
+
+* Why would you use sync.Once in Go?
+    sync.Once ensures that a piece of code is executed only once, even if it is called from multiple goroutines.
+    It is commonly used for lazy initialization or singleton patterns.
+    var once sync.Once
+    func initialize() {
+        fmt.Println("Initialized")
+    }
+    
+    func main() {
+        for i := 0; i < 5; i++ {
+            go once.Do(initialize)
+        }
+        time.Sleep(1 * time.Second)
+    }
+
+
+
+
 
 
 
