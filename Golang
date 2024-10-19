@@ -32,6 +32,11 @@
     Goroutine: Goroutines are designed for concurrency. They run concurrently, meaning they are executed in an interleaved manner on a single OS thread. This concurrency allows efficient multitasking on a single CPU core.
     Traditional Thread: Threads are typically used for parallelism. They are executed in parallel on multiple CPU cores, allowing true parallel execution of tasks. Threads often have higher overhead in terms of creation and management.
 
+* Lightweight vs. Heavyweight: (goroutines vs threads) 
+    Goroutine: Goroutines are lightweight compared to threads. They have a small initial stack size (usually 2KB or 4KB) and consume less memory. As a result, Go programs can spawn thousands of goroutines with relatively low overhead.
+    Traditional Thread: Threads are heavier in terms of memory usage and resource consumption. Creating a large number of threads can lead to increased memory overhead and management complexity.
+
+
 * What are channels in Go, and how do you use them?
     Channels are used for communication between goroutines. They provide a way for goroutines to synchronize by sending and receiving values:
         ch := make(chan int)
