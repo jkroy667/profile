@@ -160,3 +160,10 @@ Key-Value Store (NOSQL database)
 	8. Handling temporary failures:                           sloppy quorum and hinted handoff
 	9. Handling permanent failures:                           Merkle tree
 	10. Handling data centre outage:                          cross data-centre replication.
+
+
+Unique ID generator:
+1. UUID             			128bit, alpha numeric number, large space to store.
+2. Twitter snowflake 			sign bit(1) + timestamp (41) + datacenterID (5) + MachineID (5) + Sequence number (12). Best for distributed networks.
+
+
