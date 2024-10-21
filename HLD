@@ -17,7 +17,7 @@ DATABASE REPLICATION
 
 
 CACHE
-1. Read-through cache                                Read data from db if not present in cache, and store in it.
+1. Read-through cache                                Read data from cache if not present in cache, and store in it.
 2. Decide when to use cache                          Read frequent and write infrequent.
 3. Expiration Policy.                                Choose wisely not too short and not too long.
 4. Consistency.                                      Make synchronise data updation in data store and cache.
