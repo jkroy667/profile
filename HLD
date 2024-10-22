@@ -80,7 +80,7 @@ Rate Limiter
 4. Prevent server overloading
 5. Client-side rare limiter or server-side rare limiter.
 6. High fault tolerance:                                                    if any problems, not affect the entire system. 
-7. Rate limiter middleware:                                                 place in the middle of client and the API server.
+7. Rate limiter middleware:                                                 place in the middle of client and the API server. Use cache(Redis) to store bucket info
 8. Status code 429:                                                         too many request
 9. Types of bucket we need:                                                 per API 1 bucket, per IP bucket or global bucket.
 10. Token bucket:                                                           token are filled per minute like 4 tokens per min. Per request takes 1 token to execute. problem  with burst of request.
