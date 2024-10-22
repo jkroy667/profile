@@ -163,7 +163,9 @@ Key-Value Store (NOSQL database)
 
 
 Unique ID generator:
-1. UUID             			128bit, alpha numeric number, large space to store.
-2. Twitter snowflake 			sign bit(1) + timestamp (41) + datacenterID (5) + MachineID (5) + Sequence number (12). Best for distributed networks.
+1. Multi-master replication		  increase it by k, k = no. of databases, hard to scale also not possible if server cnt updates. IDs don;t go up to time.
+2. Universally unique identifier (UUID)   128bit, don't go up based on time, alpha numeric number, large space to store.
+3. Ticket server            		  centralized auto_increment feature in a single database server. easy to implement and scale but single point of failure.
+4. Twitter snowflake 			  sign bit(1) + timestamp (41)epoch time(69 years) + datacenterID (5) + MachineID (5) + Sequence number (12). Best for distributed networks.
 
 
