@@ -181,6 +181,15 @@ URL Shortner
 7. Store it in cache.
 
 
+Web Crawler
+1. Uses of crawler: 		Search engine indexing, web archiving, web mining, web monitoring.
+2. requirements:
+	1. Scalability: 	parallelization
+	2. Robustness: 		Handle Bad HTML, unresponsive servers,
+	3. Polintness: 		not make too many requests to a website within a short time interval.
+	4. Extensibility	minimal change required to add feature.
+3.
+
 
 
 
