@@ -174,5 +174,14 @@ URL Shortner
 3. 301 Vs 302 redirect 		permanently redirected therefore browser caches and reduces load as only 1st request go | temporaraly as request first send to shortening server then redirected better when track click rate.
 4. Hash Maps			stored in url shorting server: <short Url, Long url>
 5. URL Shortening 		long url -----> hash  = https://tinyUrl/{hashValue}.
+6. Methods to shorten URL:
+	1. Hash + collision Resolver:	hash the url ---> take first 7 letters of it ---> check in database (optimise use bloom filters) ---> if exits add predifined string and again hash if not save in db.
+	2. Base 62 conversion:		convert base 10 to base 62 ----> 11157 = 2 * 62(2) + 55 * 62(1) + 59 * 62(0) = 2TX
+					long url -----> is present in db ----> generate ID -----> use base 62 to generate short url ---- > store id,shortUrl,LongUrl.
+7. Store it in cache.
+
+
+
+
 
 
