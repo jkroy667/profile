@@ -168,4 +168,11 @@ Unique ID generator:
 3. Ticket server            		  centralized auto_increment feature in a single database server. easy to implement and scale but single point of failure.
 4. Twitter snowflake 			  sign bit(1) + timestamp (41)epoch time(69 years) + datacenterID (5) + MachineID (5) + Sequence number (12). Best for distributed networks.
 
+URL Shortner
+1. URL redirecting 		when you enter a tinyurl onto the browser. Once the server receives a tinyurl request, it changes the short URL to the long URL with 301 redirect.
+2. API endpoints:  		URL shortening:= POST api/v1/data/shorten, URL redirecting:= GET api/v1/shortUrl.
+3. 301 Vs 302 redirect 		permanently redirected therefore browser caches and reduces load as only 1st request go | temporaraly as request first send to shortening server then redirected better when track click rate.
+4. Hash Maps			stored in url shorting server: <short Url, Long url>
+5. URL Shortening 		long url -----> hash  = https://tinyUrl/{hashValue}.
+
 
