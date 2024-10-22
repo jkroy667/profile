@@ -201,6 +201,12 @@ Web Crawler
 	2. Cache DNS resolve
 	3. Locality: 			distribute servers over geographically 
 	4. short timeout		some servers responds very late so a wait time is applied.
+9. Detect and avoid problematic content
+	1. Redundant content
+	2. Spider traps
+	3. Data noise.
+10. Server-side rendering 		If we download and parse the website then cannot get dynamically generated links so server side nessasary.
+	
 
 
 
