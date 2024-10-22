@@ -184,13 +184,23 @@ URL Shortner
 Web Crawler
 1. Uses of crawler: 		Search engine indexing, web archiving, web mining, web monitoring.
 2. requirements:
-	1. Scalability: 	parallelization
-	2. Robustness: 		Handle Bad HTML, unresponsive servers,
-	3. Polintness: 		not make too many requests to a website within a short time interval.
-	4. Extensibility	minimal change required to add feature.
-3.
-
-
+	1. Scalability: 		parallelization
+	2. Robustness: 			Handle Bad HTML, unresponsive servers,
+	3. Polintness: 			not make too many requests to a website within a short time interval.
+	4. Extensibility		minimal change required to add feature.
+3. High Level Design:			seed url --> URL frontier(stores url to be downloaded) --> HTML downloader --> DNS resolve and content parse --> content seen --> content storage or link extractor
+					--> URL filter --> URL seen ? --> URL storage or URL frontier.
+4. DFS vs BFS: 				consider as directed graph, dfs not used because can be very deep and can be impolite as searching same host only, so bfs is preferred.
+5. Politeness: 				when too much request to same host. Delay can be added between two download tasks.
+					mapping table --> queue router --> multiple queue(each for each server) --> queue selector --> worker threads.
+6. Priority: 				prioritize urls based on usefulness, pageranks, website traffic or update frequency.
+					A prioritizer can be placed in front of queues that computes priority of url and and assign high priority value queue.
+7. Storage for frontier: 		Hybrid, urls stored in disk, and maintain buffers for enque/dequeue data operations.
+8. HTML downloader performace inc.	
+	1. distributed crawl: 		multiple severs download html
+	2. Cache DNS resolve
+	3. Locality: 			distribute servers over geographically 
+	4. short timeout		some servers responds very late so a wait time is applied.
 
 
 
