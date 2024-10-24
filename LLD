@@ -12,4 +12,30 @@
       * floor
     4. ParkingLot 
       * List<level>
-      * Instance 
+      * ParkingLot Instance 
+
+2. Design a Vending Machine
+    1. Product 
+        * name
+        * price
+        * getters and setters
+    2. Inventory
+        * Map<Product,Integer> products
+        * addproduct(), removeProduct(), updateQuantity(), getQuantity(), isAvailable()
+    3. VendingMachineState Interface
+        * selectProduct()
+        * addNote()
+        * addCoin()
+        * dispenseProduct()
+        * returnChange()
+    4. IdleState
+    5. ReadyState
+    6. dispenseState
+    7. returnChangeState
+    8. Coin
+    9. Note
+    10. VendingMachine
+        * Instance, IdleState, ReadyState, despenseState, returnChangeState, CurrentState, selectedProduct, totalAmount
+        * getInstance(), selectProduct(), insertCoin(), insertNote(), dispenseProduct(), returnChange(), setState(), getIdleState(), getReadyState(), getDispenseState(), getReturnChangeState()
+        * getters and setters like => getSelectedProduct(), setSelectedProduct(), resetSelectedProduct(), getAmount(), resetAmount(), addCoin(), addNote().
+    
