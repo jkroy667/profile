@@ -103,6 +103,23 @@ g1. Design a Parking Lot:
         * authenticateUser(card,pin)
         * checkBalance(), withdrawCash(accountNumer,amaount), depositeCash()
 
+6. Design a car rental system 
+    1. Car:
+        * make, model, year, rentalPricePerDay, licencePlate, available
+        * different getters and setters
+    2. Customer:
+        * name 
+        * drivingLicienceNumber
+    3. Reservation:
+        * ReservationID, Car, Customer, startDate, EndDate, totalPrice
+        * constructor, calculateTotalPrice(), all getters
+    4. RentalSystem:
+        * Instance, Map<string,Car> cars, Map<string,Reservation> reservations, paymentProcessor
+        * getInstance(), addCar(), removeCar(), SearchCar(), isCarAvailable(), makeReservation(), cancelReservation(), processPayment(), generateReservationId()
+    5. PaymentProcesser Interface
+        * public class CreditCardPaymentProcessor implements PaymentProcessor
+        * public class PayPalPaymentProcessor implements PaymentProcessor
+
 
 
 
