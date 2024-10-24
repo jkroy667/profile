@@ -41,4 +41,22 @@
         * Instance, IdleState, ReadyState, despenseState, returnChangeState, CurrentState, selectedProduct, totalAmount
         * getInstance(), selectProduct(), insertCoin(), insertNote(), dispenseProduct(), returnChange(), setState(), getIdleState(), getReadyState(), getDispenseState(), getReturnChangeState()
         * getters and setters like => getSelectedProduct(), setSelectedProduct(), resetSelectedProduct(), getAmount(), resetAmount(), addCoin(), addNote().
+
+3. Design an Elevator 
+    1. Elevator
+        * direction
+        * List<Request> requests
+        * currentFloor, ID, Capacity
+        * addRequest(), getNextRequest(), getCapacity(), processRequests(), processRequest(), run(), getCurrentFloor()
+    2. Request
+        * sourceFloor, destinationFloor
+        * getters and setters
+    3. Direction enum 
+        * up, down
+    4. Elevator Controller
+        * List<elevator> elevators
+        * RequestElevator(), findOptimalElevator()
+
+
+
     
