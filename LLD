@@ -3,6 +3,7 @@
       * vehicle Type 
       * isAvailable
       * parking Number
+      * isAvailable(), getVehicleType(), getParkingNumber(), parkVehicle(), unParkVehicle(), getParkedVehicle()
     2. Vehicle Interface
       * Car
       * Bike 
@@ -10,9 +11,11 @@
     3. Level
       * List<parkingSpot>
       * floor
+      * parkVehicle(), unparkVehicle(), displayAvailability()
     4. ParkingLot 
       * List<level>
       * ParkingLot Instance 
+      * getInstance(), addlevel(), parkVehicle(), unparkVehicle(), displayAvailability().
 
 2. Design a Vending Machine
     1. Product 
