@@ -143,6 +143,10 @@ g1. Design a Parking Lot:
         * public synchronized void cancelReservation(String reservationId)
         * public synchronized void checkIn(String reservationId)
         * public synchronized void checkOut(String reservationId, Payment payment)
+    7. Payment interface
+        * boolean processPayment(double amount)
+        * public class CashPayment implements Payment 
+        * public class CreditCardPayment implements Payment
         
 
 
