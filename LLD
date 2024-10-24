@@ -57,6 +57,25 @@
         * List<elevator> elevators
         * RequestElevator(), findOptimalElevator()
 
+4. Design a Tic Tak Toe
+    1. Player
+        * name
+        * Symbol
+    2. Board
+        * char[][] grid
+        * movesCount
+        * initBoard(), makeMove(row,col,symbol), isFull(), hasWinner(), printBoard().
+    3. Game
+        * Player1, Player2
+        * Board
+        * currentPlayer
+        * Play(), SwitchPlayer(), getValidInput().
+
+5. 
+
+        
+        
+
 
 
     
