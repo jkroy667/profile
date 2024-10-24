@@ -1,4 +1,4 @@
-1. Design a Parking Lot:
+g1. Design a Parking Lot:
     1. parking spot:
       * vehicle Type 
       * isAvailable
@@ -71,7 +71,40 @@
         * currentPlayer
         * Play(), SwitchPlayer(), getValidInput().
 
-5. 
+5. Design an ATM 
+    1. Account   
+        * AccountNumber 
+        * balance
+        * getAccountNumber(), getBalance(), credit(), debit()
+    2. Card
+        * CardNumber
+        * pin 
+        * getCardNumebr(), getPin()
+    3. BankingSystem
+        * Map<string,Account> accounts
+        * createAccount(accountNumber, balance), getAccount(accountNumber), processTransaction(transaction)
+    4. public Abstract class Transaction
+        * TransactionId 
+        * account 
+        * amount
+        * execute()
+    5. public class WithdrawalTransaction extends Transaction 
+        * constructor(transactionID, account,amount){super(transactionID, account,amount)}
+        * execute() // account.debit
+    6. public class DepositTransaction extends Transaction
+        * constructor(transactionID, account,amount){super(transactionID, account,amount)}
+        * execute() // account.credit 
+    7. CashDispenser
+        * cashAvailable
+        * public synchronized void dispenseCash(int amount)
+    8. ATM:
+        * BankingServer
+        * CashDispenser
+        * authenticateUser(card,pin)
+        * checkBalance(), withdrawCash(accountNumer,amaount), depositeCash()
+
+
+
 
         
         
