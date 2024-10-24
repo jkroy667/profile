@@ -1,0 +1,15 @@
+1. Design a Parking Lot:
+    1. parking spot:
+      * vehicle Type 
+      * isAvailable
+      * parking Number
+    2. Vehicle Interface
+      * Car
+      * Bike 
+      * Truck
+    3. Level
+      * List<parkingSpot>
+      * floor
+    4. ParkingLot 
+      * List<level>
+      * Instance 
