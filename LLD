@@ -120,6 +120,31 @@ g1. Design a Parking Lot:
         * public class CreditCardPaymentProcessor implements PaymentProcessor
         * public class PayPalPaymentProcessor implements PaymentProcessor
 
+7. Design a Hotel Management System 
+    1. Room:
+        * Id, roomType, price, roomStatus
+        * book(), checkIn(), CheckOut(), getID, getType, getPrice, getStatus.
+    2. RoomStatus enum:
+        * Available, occupied, Booked.
+    3. RoomType enum:
+        * single, double, deluxe, suite.
+    3. guest:
+        * id, name, email, phoneNumber
+        * all getters 
+    4. Reservation:
+        * Id, Guest, room, checkInDate, checkOutDate, ReservationStatus
+        * CancelReservation(), all getters
+    5. ReservationStatus enum 
+        * Confiremed, cancelled
+    6. HotelManagementSystem
+        * instance, Map<string,room>, Map<string,guest> guests, Map<string,Reservation> reservations.
+        * addGuest(), getGuest(), addRoom(), getRoom()
+        * public synchronized Reservation bookRoom(Guest guest, Room room, LocalDate checkInDate, LocalDate checkOutDate)
+        * public synchronized void cancelReservation(String reservationId)
+        * public synchronized void checkIn(String reservationId)
+        * public synchronized void checkOut(String reservationId, Payment payment)
+        
+
 
 
 
