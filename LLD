@@ -1,4 +1,4 @@
-g1. Design a Parking Lot:
+1. Design a Parking Lot:
     1. parking spot:
       * vehicle Type 
       * isAvailable
@@ -178,7 +178,38 @@ g1. Design a Parking Lot:
         * addNotification(String userId, Notification notification)
         * getNotifications(String userId)
         * generateNotificationId()
-        
+
+9. Design Restaurant management system
+    1. Order:
+        * Id, List<MenuItem> orderItems, orderStatus, timestamp, totalAmount.
+        * setStatus(), getId(), getItems(), gettimestamp, getAmount()
+    2. MenuItem:
+        * Id, name, price, description, available
+        * all getters
+    3. Reservation:
+        * Id, customerName, contactNumber, partySize, reservationTime
+    4. OrderStatus enum:
+        * pending, preparing, ready, completed, cancelled
+    5. Staff:
+        * ID, name, contactNumber, role.
+    6. Payment:
+        1. paymentMethod enum:
+            * cash, creditCard, mobilePay
+        2. payment:
+            * Id, amount, method, status
+        3. paymentStatus enum
+            * pending, completed, failed
+    6. RestrauntManagementSystem:
+        * Instance, List<MenuItem> menu, Map<Integer,order> orders, List<Reservation> reservation, Map<Integer,payment> payments, List<Staff> staffs
+        * getInstance() // singleton
+        * addMenuItem()
+        * removeMenuItem()
+        * List<MenuItem> getMenu()
+        * placeOrder()
+        * notifyKitchen()
+        * makeReservation(), cancelReservation()
+        * processPayment()
+        * addStaff(), removeStaff(), notifyStaff()
 
 
 
