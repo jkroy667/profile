@@ -211,6 +211,47 @@
         * processPayment()
         * addStaff(), removeStaff(), notifyStaff()
 
+10. Design a Airline Management System 
+    1. Aircraft:
+        * model, totalseats
+    2. Passanger:
+        * Id, name, email, phoneNumber
+    3. Flight:
+        1. flight:
+            * flightNumber, source, destination, departureTime, ArrivalTime, List<seat> availableSeats
+            * all getters
+        2. FlightSearch:
+            * List<flight> flights
+            * searchFlight(source, destination, date)
+    4. Seat:
+        1. Seat:
+            * number, seatType, seatStatus
+        2. SeatType enum:
+            * economy, premium_economy, bussinessClass, firstClass
+        3. SeatStatus enum:
+            * available, reserved, occupied
+    5. Booking:
+        1. Booking:
+            * Id, passanger, flight, seat, bookingStatus, price
+            * Cancel(), getBookingId()
+        2. BookingManager:
+            * Instance, Map<string,Booking> bookings, lock
+            * createBooking(), cancelBooking()
+        3. BookingStatus enum:
+            * confirmed, cancelled, pending, expired
+    6. Payment:
+        1. paymentMethod enum:
+            * cash, creditCard, mobilePay
+        2. payment:
+            * Id, amount, method, status
+        3. paymentStatus enum
+            * pending, completed, failed
+        4. PaymentProcesssor:
+            * Instance, processPayment()
+    7. AirlineManagementSystem:
+        * List<flight> flights, List<aircraft> aircrafts, flightSearch, BookingManager, paymentProcessor
+        * addFlight(), addAircraft(), searchFlight(), bookFlight(), cancelFlight(), processPayment() 
+
 
 
 
