@@ -252,6 +252,38 @@
         * List<flight> flights, List<aircraft> aircrafts, flightSearch, BookingManager, paymentProcessor
         * addFlight(), addAircraft(), searchFlight(), bookFlight(), cancelFlight(), processPayment() 
 
+11. Design an Digital Wallet.
+    1. Account:
+        * id, user, balance, AccountNumber, currency, List<Transaction> transactions
+        * deposit(BigDecimal amount), withdraw(BigDecimal amount), addTransaction(), all getters
+    2. User
+        * id, name, email, phoneNumber, List<Account> accounts
+        * addAccount(), removeAccount(), getId()
+    3. public abstract class PaymentMethod
+        * id, user
+        * processPayment()
+        1. public class BankAccount extends PaymentMethod
+            * accountNumber, routingNumber
+            * processPayment()
+        2. public class CreditCard extends PaymentMethod
+            * cardNumber, expirationDate, cvv
+            * processPayment()
+    4. Currency enum:
+        * inr, usd, eur, jpy
+    5. CurrencyConverter:
+        * Map<currency,BigDecimal> exchangeRates
+        * convert()
+    6. Transaction:
+        * id, sourceAccount, destinationAccount, currency, amount, timestamp.
+        * all getters
+    7. DigitalWallet:
+        * Instance,  Map<String, User> users, Map<String, Account> accounts, Map<String, PaymentMethod> paymentMethods;
+        * createUser(), getUser()
+        * createAccount(), getAccount()
+        * createPaymentMethod(), getPaymentMethod()
+        * public synchronized void transferFunds(Account sourceAccount, Account destinationAccount, BigDecimal amount, Currency currency) 
+        * getTransactionHistory(Account account)
+
 
 
 
