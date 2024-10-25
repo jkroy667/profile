@@ -147,6 +147,37 @@ g1. Design a Parking Lot:
         * boolean processPayment(double amount)
         * public class CashPayment implements Payment 
         * public class CreditCardPayment implements Payment
+
+8. Design a social Media site like facebook
+    1. User:
+        * Id, name, email, password, profilePic, bio, List<string> friends, List<Post> posts.
+        * all getters and setters
+    2. Comment:
+        * Id, userId, PostId, content, timestamp
+        * all getters
+    3. Post:
+        * Id, userId, content, List<string> imageUrls, List<string> videoUrls, timestamp, List<string> likes, List<comment> comments
+        * all getters
+    4. Notification:
+        * Id, userId, NotificationType, content, timestamp
+        * all getters
+    5. NotificationType Enum:
+        * frientRequest, frientRequestAccepted, like, comment, mention
+    6. SocialMediaService:
+        * Instance, List<string,User> user, List<string,post> post, List<string,List<Notification>> notifications.
+        * getInstance() 
+        * registerUser(User user) // user.put(user.getId(),user)
+        * loginUser(String email, String password) // check if the user present in the map and check its email and password
+        * updateUserProfile(User user)
+        * sendFriendRequest(String senderId, String receiverId) // create a new notification of frientRequest and add in map as key senderId
+        * acceptFriendRequest(String userId, String friendId) // add in both friends list and also add in notification map
+        * createPost(Post post) 
+        * getNewsfeed(String userId)
+        * likePost(String userId, String postId)
+        * commentOnPost(Comment comment)
+        * addNotification(String userId, Notification notification)
+        * getNotifications(String userId)
+        * generateNotificationId()
         
 
 
