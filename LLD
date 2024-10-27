@@ -284,6 +284,40 @@
         * public synchronized void transferFunds(Account sourceAccount, Account destinationAccount, BigDecimal amount, Currency currency) 
         * getTransactionHistory(Account account)
 
+12. Design Book My show:
+    1. Movie:
+        * Id, title, description, duration
+        * all getters
+    2. Theater:
+        * Id, name, location, List<show> shows
+    3. Show:
+        * Id, movie, theater, startTime, endTime, map<string, seat> seats
+        * all getters
+    4. Booking 
+        1. Booking:
+            * Id, user, show, List<seat> seats, totalPrice, status.
+            * all getters
+        2. BookingStatus enum:
+            * pending, confirmed, cancelled
+    5. seat:
+        1. seat:
+            * Id, row, column, type, price, status
+            * all getters
+        2. seatType enum:
+            * Normal, premium
+        3. seatStatus enum:
+            * available, booked
+    6.User:
+        * Id, name, email
+    7. MovieTicketSystem:
+        * Instance, List<Movies> movies, List<theater> theaters, Map<string,show> shows, Map<string,booking> bookings
+        * getInstance(), addMovie(), addTheater(), addShow(), getMovies(), getTheaters(), getShow(show)
+        * public synchronized Booking bookTickets(User user, Show show, List<Seat> selectedSeats)
+        * areSeatsAvailable(Show show, List<Seat> selectedSeats)
+        * markSeatsAsBooked(Show show, List<Seat> selectedSeats) 
+        * calculateTotalPrice(List<Seat> selectedSeats)
+        * generateBookingId()
+        * confirmBooking(String bookingId), cancelBooking(String bookingId), markSeatsAsAvailable(Show show, List<Seat> seats);
 
 
 
