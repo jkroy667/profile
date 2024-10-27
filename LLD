@@ -319,6 +319,40 @@
         * generateBookingId()
         * confirmBooking(String bookingId), cancelBooking(String bookingId), markSeatsAsAvailable(Show show, List<Seat> seats);
 
+13. Design Spiltwise:
+    1. SplitType:
+        1. abstract class Split:
+            * user, amount
+            * abstract getAmount(), setAmount(), getUser()
+        2. EqualSplit extends split:
+            * getAmount(), setAmount()
+        3. ExactSplit extends Split:
+            * getAmount()
+        4. PercentSplit extends Split 
+            * percentage
+            * getAmount(), getPercentage()
+    2. Expense:
+        * Id, amount, description, paidBy, list<split> splits;
+        * addSplit(), all getters
+    3. Group:
+        * id, name, List<User> members, List<expense> expenses;
+        * addMember(), addExpense(), all getters
+    4. User:
+        * Id, emailId, name, Map<string,double> balances
+        * all getters
+    5. Transaction:
+        * Id, sender, receiver, amount
+    6. SplitwiseService:
+        * Instance, Map<string,user> users, Map<string,group> groups;
+        * getInstance(), addUser(user), addGroup(group);
+        * addExpense(String groupId, Expense expense)
+        * splitExpense(Expense expense)
+        * updateBalances(Expense expense)
+        * updateBalance(User user1, User user2, double amount)
+        * getBalanceKey(User user1, User user2)
+        * settleBalance(String userId1, String userId2)
+        * createTransaction(User sender, User receiver, double amount) 
+
 
 
         
