@@ -398,7 +398,11 @@
             * processPayment(),
         2. public class CreditCardPayment implements Payment:
             * processPayment()
-    8. 
+    8. OnlineShoppingService:
+        * Instance, Map<string,user> users, Map<string,Product> products, Map<string,Order> orders
+        * getInstance(), registerUser(), addUser(), addProduct(), getProduct(), searchProduct()
+        * public synchronized Order placeOrder(User user, ShoppingCart cart, Payment payment)
+        * getOrder(), generateOrderId()
 
 
     
