@@ -404,6 +404,36 @@
         * public synchronized Order placeOrder(User user, ShoppingCart cart, Payment payment)
         * getOrder(), generateOrderId()
 
+16. Design Ride Sharing App:
+    1. Driver:
+        * Id, name, contact, licencePlate, location, statu.
+        * all getters
+    2. DriverStatus enum:
+        * Available, busy
+    3. Location:
+        * latitute, longitute
+    4. Passanger:
+        * Id, name, contact, location
+        * all getters
+    5. Ride:
+        * Id, passanger, driver, source, destination, RideStatus, fare
+        * setDriver(), setStatus(), setFare(), all getters
+    6. RideStatus enum:
+        * Requested, accepted, inProgres, completed, cancelled
+    7. Payment:
+        * Id, ride, amount, PaymentStatus
+    8. PaymentStatus:
+        * pending, complete, failed
+    9. RideService:
+        * Instance, Map<string,Passanger> passangers, Map<string,Driver> driver, Map<string,Ride> ride, queue<Ride> requestRides
+        * addPassanger(), addDriver()
+        * requestRide(Passenger passenger, Location source, Location destination) 
+        * acceptRide(Driver driver, Ride ride), startRide(Ride ride), completeRide(Ride ride), cancelRide(Ride ride)
+        * notifyDrivers(Ride ride)
+        * notifyPassenger(Ride ride), notifyDriver(Ride ride)
+        * calculateFare(Ride ride)
+        * calculateDistance(), calculateDuration(), processPayment(), generateRideId()
+
 
     
 
