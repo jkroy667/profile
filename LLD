@@ -353,6 +353,31 @@
         * settleBalance(String userId1, String userId2)
         * createTransaction(User sender, User receiver, double amount) 
 
+14. Snake Ladder Game:
+    1. Snake:
+        * start, end
+        * getStart(), getEnd()
+    2. Ladder:
+        * start, end
+        * getStart(), getEnd()
+    3. Dice:
+        * MinVal, MaxVal, getRoll()
+    4. Board:
+        * BoardSize, List<Snake> snakes, List<ladder> ladders
+        * initializeSnakesAndLadders(), getBoardSize(), getNewPositionAfterSnakeOrLadder(), 
+    5. Player:
+        * name, position
+        * getName(), getPosition(), setPosition()
+    6. SnakeAndLadderGame:
+        * Board, List<Players> players, Dice, currentPlayerIndex
+        * Play(), isGameOver()
+    6. GameManager:
+        * Instance, List<SnakeAndLadderGame> games 
+        * getInstance(), startNewGame()
+
+
+    
+
 
 
         
