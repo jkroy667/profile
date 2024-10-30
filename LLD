@@ -375,6 +375,31 @@
         * Instance, List<SnakeAndLadderGame> games 
         * getInstance(), startNewGame()
 
+15. Design a Online Shopping system:
+    1. Product:
+        * Id, name, price, description, quantity
+        * updateQuantity(), isAvailable(), all Getters
+    2. OrderItems:
+        * product,quantity
+        * getProduct(), getQuantity()
+    3. OrderStatus enum:
+        * pending, processing, shipping, delivered, cancelled
+    4. Order:
+        * Id, user, List<orderItem> items, totalAmount, OrderStatus
+        * calculteTotalAmount(), setStatus(), getId(), getUser(), getItems(), getAmount(), getStatus()
+    5. User:
+        * Id, name, email, password, List<order> orders
+        * addOrder(), all getters
+    6. Shopping Cart:
+        * Map<string,OrderItem> items
+        * addItem(), removeItem(), updateItemQuantity(), getItems(), clear().
+    7. Payment:
+        1. payment interface:
+            * processPayment(),
+        2. public class CreditCardPayment implements Payment:
+            * processPayment()
+    8. 
+
 
     
 
