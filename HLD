@@ -235,7 +235,19 @@ News Feed System:
 5. fanout service: 		push new content to friends news feed. Newsfeed data is stored in cache for fast retrieval
 6. Notification: 		Inform friends that new content is available.
 7. feed building: 		user(web browser or app) --> DNS --> load balancer --> web servers--> News feed service --> News feed cache
-8. 
+8. deep down fanout service	fanout service --> graph db(get friends id) --> user cache and database (filter friends, any blocked, mute content etc)
+				---> message queue ---> fanout workers ---> News feed cache (stored data in <userId,postId> 
+	1. Fetch friend IDs from the graph database
+	2. Get friends info from the user cache.
+	3. Send friends list and new post ID to the message queue.
+	4. Fanout workers fetch data from the message queue
+	5. Store <post_id, user_id > in news feed cache
+9.deep down Newsfeed retrieval:	first check in CDN then --> (earlier process) --> Newsfeed service --> News feed cache (<postId,userID>) --> userCache and userdb --> postcache and postdb --> user
+10. Other points:		Keep web tier stateless, Cache data as much as you can, Support multiple data centers,  Lose couple components with message queues, Monitor key metrics
+
+
+	
+
 
 	
 	
