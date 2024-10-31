@@ -226,6 +226,18 @@ Notification Sysytem
 	No, due to its distributed network, can solve by checking eventID of message already send or not 
 5. retry mechanism: 			when third party server fails to send notif, it will be send to queue for retry.
 
+
+News Feed System:
+1. Feed Publishing: 		post stored in cache and database, post should pop to all his friends.
+2. NewsFeed Building: 		aggregate all friends post in some order.
+3. feed publishing: 		user(web browser or app) --> DNS --> load balancer --> web servers(auth and rate limit) --> Post service, fanout service, notification service
+4. post service: 		stores the data of the post in cache and database.
+5. fanout service: 		push new content to friends news feed. Newsfeed data is stored in cache for fast retrieval
+6. Notification: 		Inform friends that new content is available.
+7. feed building: 		user(web browser or app) --> DNS --> load balancer --> web servers--> News feed service --> News feed cache
+8. 
+
+	
 	
 	
 
