@@ -434,6 +434,37 @@
         * calculateFare(Ride ride)
         * calculateDistance(), calculateDuration(), processPayment(), generateRideId()
 
+17. Design Food Delivery service:
+    1. MenuItem:
+        * Id, name, description, price, isAvailable
+        * setAvailablity()
+    2. Restaurant:
+        * Id, name, address, List<MenuItem> Menu;
+        * addMenuItem(), removeMenuItem(), getId(), getMenu()
+    3. Customer:
+        * Id, name, email, phoneNumber
+        * all getters
+    4. DeliveryAgent:
+        * Id, name, phoneNumber, isAvailable
+        * setAvailable(), getId(), getAvailable()
+    5. Order:
+        1. OrderItem:
+            * MenuItem, quantity
+        2. Order:
+            * Id, Customer, Restaurant, List<OrderItem> items, status, DeliveryAgent, 
+            * addItem, removeItem, setStatus, getStatus, assignDeliveryAgent(), getId()
+        3. OrderStatus enum:
+            * pending, confirm. preparing, outOfDelivery, delivered, cancelled
+    6. FoodDeliveryService:
+        * Instance, Map<string,Restraunt> restaurants, Map<string,customers> customers, Map<string, order> orders, Map<string, DeliveryAgent> agents
+        * getInstance(), registerUser(), registerRestaurant(), registerDeliveryAgent()
+        * getAvailableRestaurants()
+        * placeOrder(String customerId, String restaurantId, List<OrderItem> items), notifyRestaurant(Order order)
+        * updateOrderStatus(String orderId, OrderStatus status), notifyCustomer(Order order)
+        * cancelOrder(String orderId)
+        * assignDeliveryAgent(Order order), notifyDeliveryAgent(Order order)
+        * generateOrderId()
+
 
     
 
