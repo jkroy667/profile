@@ -264,6 +264,8 @@ Chat System:
 	2. Statefull: 		user1 --(ws)--> (chat service and presence servers) --(ws)--> user2
 	3. Third party: 	push notification
 7. Scalability: 		Not design using single server design. Can start with a sigle server design, but interviewer should know its starting.
+8. Storage:	
+	1. User's data 		data like profile, settings, friend list --> store in reliable storage --> relational DB --> use replication and sharding for scalability and availability.
 
 
 
