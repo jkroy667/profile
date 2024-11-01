@@ -1,3 +1,4 @@
+
 Keywords in HLD
 
 LOAD BALANCER
@@ -246,26 +247,46 @@ News Feed System:
 10. Other points:		Keep web tier stateless, Cache data as much as you can, Support multiple data centers,  Lose couple components with message queues, Monitor key metrics
 
 Chat System:
-1. High level: 			sender --> chat service (store message,relay message) --> reciever
+1. High level: 				sender --> chat service (store message,relay message) --> reciever
 2. protocols:
-	1. Client side: 	http connection with keep-alive header to reduce number of tcp handshake.
-	2. receiver side: 	client-initiated http not suitable, server-initiated connection: polling, long polling, and web sockets
-3. polling:			client periodically asks the server if there are messages available, depending on frequency it could be costly, because maximum time no would be the answer 
-4. long polling: 		client holds the connection open until new messages available or timeout threshold reached.
-	1. drawback1:   	sender receiver may not connect to same server, as http based servers are usally stateless so load balancer could redirect the message that might not have long polled connection.
-	2. drawback2: 		No good way to tell if the client is disconnected.
-	3. drawback3: 		Its inefficient. user might not chat much, but long polling still make periodic connections.
-5. Websocket:			Initiated by the clint, bi-directional and persistent. First do tcp handshake then builds bi-directional connection
-	1. firewall: 		As it uses port 80(http) and 443(https) it works even in firewalls.
-	2. both side connect: 	sender --(ws)--> chat service --(ws)--> receiver
-	3. other features: 	like signup, login, user profile can use traditional http
+	1. Client side: 		http connection with keep-alive header to reduce number of tcp handshake.
+	2. receiver side: 		client-initiated http not suitable, server-initiated connection: polling, long polling, and web sockets
+3. polling:				client periodically asks the server if there are messages available, depending on frequency it could be costly, because maximum time no would be the answer 
+4. long polling: 			client holds the connection open until new messages available or timeout threshold reached.
+	1. drawback1:   		sender receiver may not connect to same server, as http based servers are usally stateless so load balancer could redirect the message that might not have long polled connection.
+	2. drawback2: 			No good way to tell if the client is disconnected.
+	3. drawback3: 			Its inefficient. user might not chat much, but long polling still make periodic connections.
+5. Websocket:				Initiated by the clint, bi-directional and persistent. First do tcp handshake then builds bi-directional connection
+	1. firewall: 			As it uses port 80(http) and 443(https) it works even in firewalls.
+	2. both side connect: 		sender --(ws)--> chat service --(ws)--> receiver
+	3. other features: 		like signup, login, user profile can use traditional http
 6. high level design: 		
-	1. Stateless: 		user --(http)--> load balancer --> service discover, Auth service, group managemnet, user profile.
-	2. Statefull: 		user1 --(ws)--> (chat service and presence servers) --(ws)--> user2
-	3. Third party: 	push notification
-7. Scalability: 		Not design using single server design. Can start with a sigle server design, but interviewer should know its starting.
+	1. Stateless: 			user --(http)--> load balancer --> service discover, Auth service, group managemnet, user profile.
+	2. Statefull: 			user1 --(ws)--> (chat service and presence servers) --(ws)--> user2
+	3. Third party: 		push notification
+7. Scalability: 			Not design using single server design. Can start with a sigle server design, but interviewer should know its starting.
 8. Storage:	
-	1. User's data 		data like profile, settings, friend list --> store in reliable storage --> relational DB --> use replication and sharding for scalability and availability.
+	1. User's data: 		data like profile, settings, friend list --> store in reliable storage --> relational DB --> use replication and sharding for scalability and availability.
+	2. chat history:		Key-value store --> easy horizontal scale, low latency, handle long tail of data well unlike relational db.
+	3. data model:
+		1. one to one:		message_id, senderId, receiverId, content, created_at
+		2. group chat:		channel_id, message_id, user_id, content, created_at
+	4. Generate message id:		It should be unique and sorted by time ( new row should have higher ID value) 
+		1. auto_increment: 	mysql has that but Nosql doesn't have that feature
+		2. snowflake:		global 64-bit sequence number generator --> sorted by time 
+9. Service Discovery: 			recommand best server to connect based on some criteria like geographical location, server capacity etc.
+	1. Apache Zookepper: 		best open source solution to service discovery --> registers all chat servers --> picks best chat server for client
+10. Message flow:			
+	1. One-to-one flow: 		userA --> chat server1 --> Id generator then message syn queue --> stores in KV store and if offline send to push notification server or if online ---> chat server2 --> userB
+	2. Message sync across device:	userA phone (Id = 658) and userA laptop(ID 655) --> chat server(session of phone and laptop) --> KV store.
+	3. group chat flow:		userA --> chat server --> (message queue of B) and (message queue of C) --> userB and userC
+		1. scalability:		when group size is small then can provide each message queue to each user 
+11. Online presence:
+	1. User login:			After web socket connection is build, user's online status and last_active_at timestamp is stored in KV store.
+	2. User logout:			when user logs out --> the online status is changed in KV store.
+	
+		
+		
 
 
 
