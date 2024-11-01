@@ -255,9 +255,18 @@ Chat System:
 	1. drawback1:   	sender receiver may not connect to same server, as http based servers are usally stateless so load balancer could redirect the message that might not have long polled connection.
 	2. drawback2: 		No good way to tell if the client is disconnected.
 	3. drawback3: 		Its inefficient. user might not chat much, but long polling still make periodic connections.
-5. Websocket:			Initiated by the clint, bi-directional and persistent.
+5. Websocket:			Initiated by the clint, bi-directional and persistent. First do tcp handshake then builds bi-directional connection
 	1. firewall: 		As it uses port 80(http) and 443(https) it works even in firewalls.
 	2. both side connect: 	sender --(ws)--> chat service --(ws)--> receiver
+	3. other features: 	like signup, login, user profile can use traditional http
+6. high level design: 		
+	1. Stateless: 		user --(http)--> load balancer --> service discover, Auth service, group managemnet, user profile.
+	2. Statefull: 		user1 --(ws)--> (chat service and presence servers) --(ws)--> user2
+	3. Third party: 	push notification
+7. Scalability: 		Not design using single server design. Can start with a sigle server design, but interviewer should know its starting.
+
+
+
 
 
 	
