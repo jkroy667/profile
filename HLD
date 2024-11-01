@@ -284,6 +284,7 @@ Chat System:
 11. Online presence:
 	1. User login:			After web socket connection is build, user's online status and last_active_at timestamp is stored in KV store.
 	2. User logout:			when user logs out --> the online status is changed in KV store.
+	3. User disconnect: 		when user connection lost make it offline/
 	
 		
 		
