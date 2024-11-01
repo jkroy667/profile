@@ -284,7 +284,10 @@ Chat System:
 11. Online presence:
 	1. User login:			After web socket connection is build, user's online status and last_active_at timestamp is stored in KV store.
 	2. User logout:			when user logs out --> the online status is changed in KV store.
-	3. User disconnect: 		when user connection lost make it offline/
+	3. User disconnect: 		when user connection lost/connect make it offline/online but make user experience poor or make client sends heartbeat to server every 5 sec, If server not get heatbeat for 30sec make it offline.
+	4. online status fanout: 	userA --> presence servers( channel A-B , channel A-C.....) <-- subscribers( userB, userC....)
+
+
 	
 		
 		
