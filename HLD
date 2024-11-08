@@ -150,6 +150,7 @@ Key-Value Store (NOSQL database)
 11. Read Path
     1. Checks first data is in memory cache, return directly 
     2. If not, check in bloom filters to figure out which SSTables and then return its value.
+13. Bloom filters:					Check the Bloom filters of each SSTable. Only read from SSTables where the Bloom filter indicates a possible match for the key. never give false negative.
 12. Summary
 	1. Ability to store big data:                             use consistent hashing to spread the load across multiple servers.
 	2. High availability reads:                               Data replication, multi data-centre setup.
